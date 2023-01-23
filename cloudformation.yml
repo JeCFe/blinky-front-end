@@ -4,7 +4,7 @@ Resources:
     Type: "AWS::S3::Bucket"
     Properties:
       BucketName: "bjss-blinky"
-      AccessControl: PublicRead
+      AccessControl: Private
       WebsiteConfiguration:
         IndexDocument: index.html
         ErrorDocument: error.html
@@ -15,9 +15,9 @@ Resources:
         Id: MyPolicy
         Version: 2012-10-17
         Statement:
-          - Sid: PublicReadForGetBucketObjects
-            Effect: Allow
-            Principal: "*"
+          - Effect: Allow
+            Principal:
+              AWS: !Sub "arn:aws:iam::cloudfront:user/CloudFront Origin Access Identity ${CloudFrontOriginIdentity}"
             Action: "s3:GetObject"
             Resource: !Join
               - ""
@@ -25,12 +25,49 @@ Resources:
                 - !Ref BlinkyFrontendBucket
                 - /*
       Bucket: !Ref BlinkyFrontendBucket
+
+  CloudFrontOriginIdentity:
+    Type: AWS::CloudFront::CloudFrontOriginAccessIdentity
+    Properties:
+      CloudFrontOriginAccessIdentityConfig:
+        Comment: "origin identity"
+
+  publicDistribution:
+    Type: AWS::CloudFront::Distribution
+    Properties:
+      DistributionConfig:
+        DefaultRootObject: index.html
+        Origins:
+          - DomainName: !GetAtt
+              - BlinkyFrontendBucket
+              - DomainName
+            Id: !Ref BlinkyFrontendBucket
+            S3OriginConfig:
+              OriginAccessIdentity: !Sub "origin-access-identity/cloudfront/${CloudFrontOriginIdentity}"
+        Enabled: "true"
+        DefaultCacheBehavior:
+          AllowedMethods:
+            - GET
+            - HEAD
+          TargetOriginId: !Ref BlinkyFrontendBucket
+          ForwardedValues:
+            QueryString: "false"
+            Cookies:
+              Forward: none
+          ViewerProtocolPolicy: redirect-to-https
+        ViewerCertificate:
+          CloudFrontDefaultCertificate: "true"
 Outputs:
   WebsiteURL:
     Value: !GetAtt
-      - BlinkyFrontendBucket
-      - WebsiteURL
+      - publicDistribution
+      - DomainName
     Description: URL for website hosted on S3
+  CloudFrontID:
+    Value: !GetAtt
+      - publicDistribution
+      - Id
+    Description: ID for Cloud Front Distribution
   S3BucketSecureURL:
     Value: !Join
       - ""
