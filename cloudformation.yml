@@ -3,6 +3,7 @@ Resources:
   BlinkyFrontendBucket:
     Type: "AWS::S3::Bucket"
     Properties:
+      BucketName: "BJSS-Blinky"
       AccessControl: PublicRead
       WebsiteConfiguration:
         IndexDocument: index.html
