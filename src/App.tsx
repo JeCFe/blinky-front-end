@@ -4,7 +4,7 @@ import "./App.css";
 import { Configuration, BlinkyBackEndApi } from "./generated-sources/openapi";
 
 const configuration = new Configuration({
-  basePath: "http://fargatealb-1752054628.us-east-1.elb.amazonaws.com",
+  basePath: "http://FargateALB-446711393.us-east-1.elb.amazonaws.com",
 });
 
 function App() {
