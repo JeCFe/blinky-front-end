@@ -1,9 +1,13 @@
 import React from "react";
+import "./Bart.css";
+import Bart from "./Bart";
 
-const Desk = (props: { name: string }) => {
+const Desk = () => {
+  const onClickHandler = () => {};
+
   return (
-    <div>
-      <button>{props.name}</button>
+    <div onClick={onClickHandler}>
+      <Bart />
     </div>
   );
 };
