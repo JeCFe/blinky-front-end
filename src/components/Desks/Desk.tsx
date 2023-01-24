@@ -1,9 +1,9 @@
 import React from "react";
 import "./Bart.css";
 import Bart from "./Bart";
-import { deskList } from "../../App";
+import { deskInfo } from "../../App";
 
-const Desk = (props: deskList) => {
+const Desk = (props: deskInfo) => {
   const onClickHandler = () => {};
 
   return (

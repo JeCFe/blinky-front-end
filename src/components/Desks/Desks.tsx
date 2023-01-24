@@ -1,8 +1,8 @@
 import React from "react";
 import Desk from "./Desk";
-import { deskList } from "../../App";
+import { deskInfo } from "../../App";
 
-const Desks = (props: deskList[]) => {
+const Desks = (props: deskInfo[]) => {
   return (
     <ul className="desk-list">
       {props.map((deskList) => (
