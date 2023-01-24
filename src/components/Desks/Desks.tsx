@@ -1,14 +1,18 @@
 import React from "react";
 import Desk from "./Desk";
+import { deskList } from "../../App";
 
-const Desks = () => {
+const Desks = (props: deskList[]) => {
   return (
-    <div>
-      <Desk />
-      <Desk />
-      <Desk />
-      <Desk />
-    </div>
+    <ul className="desk-list">
+      {props.map((deskList) => (
+        <Desk
+          id={deskList.id}
+          avibility={deskList.avibility}
+          name={deskList.name}
+        />
+      ))}
+    </ul>
   );
 };
 
