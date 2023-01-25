@@ -1,9 +1,37 @@
 import React from "react";
+import "./Bart.css";
+import Bart from "./Bart";
+import "./Button.css";
+import "./ButtonNotAvailable.css";
+import "../../Grid.css";
+import Krusty from "./Krusty";
 
-const Desk = (props: { name: string }) => {
+export type deskInfo = {
+  id: string;
+  avibility: boolean;
+  name: string;
+};
+
+const Desk = (props: deskInfo) => {
+  const onClickHandler = () => {};
+
   return (
-    <div>
-      <button>{props.name}</button>
+    <div className="item">
+      {props.avibility ? (
+        <div>
+          <Bart />
+          <button className="button-52" onClick={onClickHandler}>
+            AVAILABLE
+          </button>
+        </div>
+      ) : (
+        <div>
+          <Krusty />
+          <button className="button-52_NA" onClick={onClickHandler}>
+            {props.name}
+          </button>{" "}
+        </div>
+      )}
     </div>
   );
 };
