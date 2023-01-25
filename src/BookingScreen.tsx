@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { Configuration, BlinkyBackEndApi } from "./generated-sources/openapi";
 import { deskInfo } from "./components/Desks/Desk";
 import "./App.css";
-import { Row, Col, Container } from "react-bootstrap";
+import "./Grid.css";
 
 const configuration = new Configuration({
   basePath: "http://FargateALB-446711393.us-east-1.elb.amazonaws.com",
@@ -50,19 +50,11 @@ export const BookingScreen = () => {
         )}
       </header>
       <div className="App-body">
-        <Container>
-          <Row className="justify-content-md-center">
-            {dummyDeskList.map((desk) => (
-              <Col md={3}>
-                <Desk
-                  id={desk.id}
-                  avibility={desk.avibility}
-                  name={desk.name}
-                />
-              </Col>
-            ))}
-          </Row>
-        </Container>
+        <div className="grid">
+          {dummyDeskList.map((desk) => (
+            <Desk id={desk.id} avibility={desk.avibility} name={desk.name} />
+          ))}
+        </div>
       </div>
     </div>
   );

@@ -2,7 +2,7 @@ import React from "react";
 import "./Bart.css";
 import Bart from "./Bart";
 import "./Button.css";
-import "./Desk.css";
+import "../../Grid.css";
 
 export type deskInfo = {
   id: string;
@@ -14,7 +14,7 @@ const Desk = (props: deskInfo) => {
   const onClickHandler = () => {};
 
   return (
-    <div className="container">
+    <div className="item">
       <Bart />
       <button className="button-52" onClick={onClickHandler}>
         {props.name}
