@@ -1,7 +1,12 @@
 import React from "react";
 import "./Bart.css";
 import Bart from "./Bart";
-import { deskInfo } from "../../App";
+
+export type deskInfo = {
+  id: string;
+  avibility: boolean;
+  name: string;
+};
 
 const Desk = (props: deskInfo) => {
   const onClickHandler = () => {};
@@ -9,6 +14,7 @@ const Desk = (props: deskInfo) => {
   return (
     <div onClick={onClickHandler}>
       <Bart />
+      <button>{props.name}</button>
     </div>
   );
 };
