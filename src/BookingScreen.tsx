@@ -49,12 +49,11 @@ export const BookingScreen = () => {
           <img src={SimpsonLogo} className="App-logo" alt="logo" />
         )}
       </header>
-      <div className="App-body">
-        <div className="grid">
-          {dummyDeskList.map((desk) => (
-            <Desk id={desk.id} avibility={desk.avibility} name={desk.name} />
-          ))}
-        </div>
+
+      <div className="grid">
+        {dummyDeskList.map((desk) => (
+          <Desk id={desk.id} avibility={desk.avibility} name={desk.name} />
+        ))}
       </div>
     </div>
   );
