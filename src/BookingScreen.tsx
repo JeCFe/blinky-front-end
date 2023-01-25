@@ -51,7 +51,7 @@ export const BookingScreen = () => {
       </header>
       <div className="App-body">
         <Container>
-          <Row md={4}>
+          <Row className="justify-content-md-center">
             {dummyDeskList.map((desk) => (
               <Col md={3}>
                 <Desk
