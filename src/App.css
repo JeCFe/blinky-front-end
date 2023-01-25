@@ -29,11 +29,14 @@
 }
 
 @keyframes App-logo-spin {
-  from {
+  0% {
     transform: rotate(-10deg);
   }
-  to {
+  50% {
     transform: rotate(10deg);
+  }
+  100% {
+    transform: rotate(-10deg);
   }
 }
 
@@ -45,5 +48,24 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-  padding: 80px;
+  padding: 50px;
+}
+
+.container {
+  max-width: 90%;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 1rem;
+}
+
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }

@@ -1,10 +1,11 @@
 import React from "react";
-import Desk from "./Desks/Desk";
-import SimpsonLogo from "../logo.png";
+import Desk from "./components/Desks/Desk";
+import SimpsonLogo from "./logo.png";
 import { useEffect, useState } from "react";
-import { Configuration, BlinkyBackEndApi } from "../generated-sources/openapi";
-import { deskInfo } from "./Desks/Desk";
-import "../App.css";
+import { Configuration, BlinkyBackEndApi } from "./generated-sources/openapi";
+import { deskInfo } from "./components/Desks/Desk";
+import "./App.css";
+import { Row, Col, Container } from "react-bootstrap";
 
 const configuration = new Configuration({
   basePath: "http://FargateALB-446711393.us-east-1.elb.amazonaws.com",
@@ -38,7 +39,7 @@ export const BookingScreen = () => {
     }, 1);
   };
   return (
-    <div className="App">
+    <div>
       <header className="App-header" onClick={loadingPage}>
         {isLoading ? (
           <div>
@@ -48,11 +49,21 @@ export const BookingScreen = () => {
           <img src={SimpsonLogo} className="App-logo" alt="logo" />
         )}
       </header>
-      <ul className="desk-list">
-        {dummyDeskList.map((desk) => (
-          <Desk id={desk.id} avibility={desk.avibility} name={desk.name} />
-        ))}
-      </ul>
+      <div className="App-body">
+        <Container>
+          <Row md={4}>
+            {dummyDeskList.map((desk) => (
+              <Col md={3}>
+                <Desk
+                  id={desk.id}
+                  avibility={desk.avibility}
+                  name={desk.name}
+                />
+              </Col>
+            ))}
+          </Row>
+        </Container>
+      </div>
     </div>
   );
 };

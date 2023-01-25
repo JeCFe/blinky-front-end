@@ -1,6 +1,8 @@
 import React from "react";
 import "./Bart.css";
 import Bart from "./Bart";
+import "./Button.css";
+import "./Desk.css";
 
 export type deskInfo = {
   id: string;
@@ -12,9 +14,11 @@ const Desk = (props: deskInfo) => {
   const onClickHandler = () => {};
 
   return (
-    <div onClick={onClickHandler}>
+    <div className="container">
       <Bart />
-      <button>{props.name}</button>
+      <button className="button-52" onClick={onClickHandler}>
+        {props.name}
+      </button>
     </div>
   );
 };

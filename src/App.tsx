@@ -1,6 +1,8 @@
+import react from "react";
 import "./App.css";
 import "./components/Spinner.css";
-import { BookingScreen } from "./components/BookingScreen";
+import { BookingScreen } from "./BookingScreen";
+
 function App() {
   return (
     <div className="App">
