@@ -2,7 +2,9 @@ import React from "react";
 import "./Bart.css";
 import Bart from "./Bart";
 import "./Button.css";
+import "./ButtonNotAvailable.css";
 import "../../Grid.css";
+import Krusty from "./Krusty";
 
 export type deskInfo = {
   id: string;
@@ -15,10 +17,21 @@ const Desk = (props: deskInfo) => {
 
   return (
     <div className="item">
-      <Bart />
-      <button className="button-52" onClick={onClickHandler}>
-        {props.name}
-      </button>
+      {props.avibility ? (
+        <div>
+          <Bart />
+          <button className="button-52" onClick={onClickHandler}>
+            AVAILABLE
+          </button>
+        </div>
+      ) : (
+        <div>
+          <Krusty />
+          <button className="button-52_NA" onClick={onClickHandler}>
+            {props.name}
+          </button>{" "}
+        </div>
+      )}
     </div>
   );
 };
