@@ -2,4 +2,7 @@
 apis/BlinkyBackEndApi.ts
 apis/index.ts
 index.ts
+models/AllDesksResponse.ts
+models/Desk.ts
+models/index.ts
 runtime.ts

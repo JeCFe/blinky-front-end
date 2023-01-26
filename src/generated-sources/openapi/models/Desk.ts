@@ -36,7 +36,7 @@ export interface Desk {
      * @type {boolean}
      * @memberof Desk
      */
-    isAvailable?: boolean;
+    readonly isAvailable?: boolean;
 }
 
 /**
@@ -75,7 +75,6 @@ export function DeskToJSON(value?: Desk | null): any {
         
         'deskId': value.deskId,
         'assignedName': value.assignedName,
-        'isAvailable': value.isAvailable,
     };
 }
 
