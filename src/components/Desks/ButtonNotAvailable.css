@@ -12,6 +12,7 @@
   -webkit-user-select: none;
   touch-action: manipulation;
   z-index: 1;
+  font-family: "Homer Simpson Revised", sans-serif;
 }
 
 .button-52_NA::after {

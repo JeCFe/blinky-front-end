@@ -1,10 +1,19 @@
 .App-header {
   background-color: #282c34;
-  min-height: 40vh;
+  min-height: 10vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+.App-logo {
+  padding: 60px;
+  text-shadow: -4px -4px 0 #000, 4px -4px 0 #000, -4px 4px 0 #000,
+    4px 4px 0 #000;
+  font-family: "Homer Simpson Revised", sans-serif;
+  color: yellow;
+  font-size: 6em;
 }

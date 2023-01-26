@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { Configuration, BlinkyBackEndApi } from "../generated-sources/openapi";
-import Spinner from "../components/Spinner";
+import Spinner from "../components/Spinner/Spinner";
 import DeskPage from "./DeskPage";
 
 const configuration = new Configuration({
@@ -9,7 +9,7 @@ const configuration = new Configuration({
 });
 
 export const BookingScreen = () => {
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const api = new BlinkyBackEndApi(configuration);
@@ -24,9 +24,6 @@ export const BookingScreen = () => {
     }, 1);
   };
   return (
-    <div>
-      <button onClick={loadingPage} />
-      {isLoading ? <Spinner /> : <DeskPage />}
-    </div>
+    <div onClick={loadingPage}>{isLoading ? <Spinner /> : <DeskPage />}</div>
   );
 };
