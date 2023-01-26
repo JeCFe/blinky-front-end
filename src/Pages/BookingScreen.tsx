@@ -64,10 +64,12 @@ export const BookingScreen = () => {
           <img className="Spinner" alt="" />
         </div>
       ) : (
-        <div className="grid">
-          {dummyDeskList.map((desk) => (
-            <Desk id={desk.id} avibility={desk.avibility} name={desk.name} />
-          ))}
+        <div className="grid-padding">
+          <div className="grid">
+            {dummyDeskList.map((desk) => (
+              <Desk id={desk.id} avibility={desk.avibility} name={desk.name} />
+            ))}
+          </div>
         </div>
       )}
     </div>
