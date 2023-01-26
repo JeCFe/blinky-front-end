@@ -1,0 +1,11 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-gap: 30px;
+  background-color: #fcefa7;
+}
+
+.item {
+  min-height: 200px;
+  background-color: #eee;
+}
