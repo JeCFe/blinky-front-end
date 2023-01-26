@@ -5,7 +5,7 @@ import "./Spinner.css";
 const Spinner = () => {
   return (
     <div className="spinner-background">
-      <img alt="spinner" src={SpinnerHommer} />
+      <img className="rotate" alt="spinner" src={SpinnerHommer} />
       <p className="spinner-loading-info"> Loading Data... </p>
     </div>
   );
