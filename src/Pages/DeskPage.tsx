@@ -1,46 +1,70 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "../Pages/Grid.css";
 import Desk from "../components/Desks/Desk";
 import { deskInfo } from "../components/Desks/Desk";
+import BookingDesk from "../components/Desks/Desk";
+import {
+  BlinkyBackEndApi,
+  AllDesksResponse,
+} from "../generated-sources/openapi";
+import "../Grid.css";
+import { configuration } from "../components/Services";
 
-const dummyDeskList: deskInfo[] = [
-  { id: "A1", avibility: true, name: "Michal" },
-  { id: "A2", avibility: false, name: "Jess" },
-  { id: "A3", avibility: false, name: "Jess" },
-  { id: "A4", avibility: true, name: "Jess" },
-  { id: "A5", avibility: false, name: "Jess" },
-  { id: "A6", avibility: true, name: "Jess" },
-  { id: "A7", avibility: true, name: "Jess" },
-  { id: "A8", avibility: false, name: "Jess" },
-  { id: "A9", avibility: true, name: "Jess" },
-  { id: "A1", avibility: true, name: "Michal" },
-  { id: "A2", avibility: false, name: "Jess" },
-  { id: "A3", avibility: false, name: "Jess" },
-  { id: "A4", avibility: true, name: "Jess" },
-  { id: "A5", avibility: false, name: "Jess" },
-  { id: "A6", avibility: true, name: "Jess" },
-  { id: "A7", avibility: true, name: "Jess" },
-  { id: "A8", avibility: false, name: "Jess" },
-  { id: "A9", avibility: true, name: "Jess" },
-  { id: "A1", avibility: true, name: "Michal" },
-  { id: "A2", avibility: false, name: "Jess" },
-  { id: "A3", avibility: false, name: "Jess" },
-  { id: "A4", avibility: true, name: "Jess" },
-  { id: "A5", avibility: false, name: "Jess" },
-  { id: "A6", avibility: true, name: "Jess" },
-  { id: "A7", avibility: true, name: "Jess" },
-  { id: "A8", avibility: false, name: "Jess" },
-  { id: "A9", avibility: true, name: "Jess" },
-];
+interface props {
+  activeUser: string;
+}
 
-const DeskPage = () => {
+const DeskPage = (props: props) => {
+  const [response, setResponse] = useState<AllDesksResponse>();
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState();
+  const [bookingMade, setBookingMade] = useState(false);
+
+  const api = new BlinkyBackEndApi(configuration);
+  useEffect(() => {
+    api
+      .allDesksGetRaw()
+      .then(async (awaitResponse) => {
+        const response = await awaitResponse;
+        const data = await response.value();
+        setResponse(data);
+        setIsLoading(false);
+        setBookingMade(false);
+      })
+      .catch((error) => {
+        setError(error.response);
+        console.log(error.response);
+      });
+  }, [bookingMade]);
+
   return (
-    <div className="grid-padding">
-      <div className="grid">
-        {dummyDeskList.map((desk) => (
-          <Desk id={desk.id} avibility={desk.avibility} name={desk.name} />
-        ))}
-      </div>
+    <div>
+      {isLoading ? (
+        <div>
+          <div>test</div>
+          <img className="Spinner" alt="" />
+        </div>
+      ) : (
+        <div className="grid-padding">
+          <div className="grid">
+            {response?.desks ? (
+              response?.desks.map((desk) => (
+                <BookingDesk
+                  activeUser={props.activeUser}
+                  key={desk.deskId}
+                  id={desk.deskId as string}
+                  availability={desk.isAvailable as boolean}
+                  name={desk.assignedName || undefined}
+                  setBookingMade={setBookingMade}
+                />
+              ))
+            ) : (
+              <div>{error}</div>
+            )}
+          </div>
+        </div>
+      )}
+      ;
     </div>
   );
 };

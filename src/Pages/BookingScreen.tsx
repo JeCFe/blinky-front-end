@@ -6,23 +6,14 @@ import DeskPage from "./DeskPage";
 import LoginForm from "../components/LoginForm/LoginForm";
 
 export const BookingScreen = () => {
-  const [isLoading, setIsLoading] = useState(true);
-  const [isLogegdIn, setIsLoggedIn] = useState(false);
-
-  let userName = "";
-
-  const loadingPage = () => {
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 1);
-  };
+  const [user, setUser] = useState<string | undefined>();
 
   return (
-    <div className="background" onClick={loadingPage}>
-      {!isLogegdIn ? (
-        <LoginForm />
+    <div>
+      {!user ? (
+        <LoginForm setUserName={setUser} />
       ) : (
-        <div>{isLoading ? <Spinner /> : <DeskPage />} </div>
+        <div>{<DeskPage activeUser={user} />} </div>
       )}
     </div>
   );

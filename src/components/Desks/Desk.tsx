@@ -15,6 +15,7 @@ export type deskInfo = {
   availability: boolean;
   name?: string;
   setBookingMade: React.Dispatch<React.SetStateAction<boolean>>;
+  activeUser: string;
 };
 
 const BookingDesk = (props: deskInfo) => {
@@ -23,7 +24,7 @@ const BookingDesk = (props: deskInfo) => {
 
     var req = {
       deskId: props.id as string,
-      assignedName: "props.name as string",
+      assignedName: props.activeUser,
     };
 
     api
