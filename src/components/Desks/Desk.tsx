@@ -4,35 +4,68 @@ import "./Button.css";
 import "./ButtonNotAvailable.css";
 import "../../Grid.css";
 import Krusty from "../Krusty/Krusty";
+import {
+  BlinkyBackEndApi,
+  Configuration,
+} from "../../generated-sources/openapi";
+import { configuration } from "../Services";
 
 export type deskInfo = {
   id: string;
-  avibility: boolean;
-  name: string;
+  availability: boolean;
+  name?: string;
+  setBookingMade: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const Desk = (props: deskInfo) => {
-  const onClickHandler = () => {};
+const BookingDesk = (props: deskInfo) => {
+  const onClickHandler = () => {
+    const api = new BlinkyBackEndApi(configuration);
+
+    var req = {
+      deskId: props.id as string,
+      assignedName: "props.name as string",
+    };
+
+    api
+      .bookDeskPostRaw(req)
+      .then((response) => {
+        if (response.raw.status == 200) {
+          props.setBookingMade(true);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        if (error.response.status == 409) {
+          console.log("Tried to book a desk already booked");
+        } else {
+          console.log(error.response);
+        }
+      });
+  };
 
   return (
     <div className="item">
-      {props.avibility ? (
+      {props.availability ? (
         <div>
           <Bart />
           <button className="button-52" onClick={onClickHandler}>
+            {props.id}
+            <br />
             AVAILABLE
           </button>
         </div>
       ) : (
         <div>
           <Krusty />
-          <button className="button-52_NA" onClick={onClickHandler}>
+          <div className="button-52_NA">
+            {props.id}
+            <br />
             {props.name}
-          </button>{" "}
+          </div>{" "}
         </div>
       )}
     </div>
   );
 };
 
-export default Desk;
+export default BookingDesk;
