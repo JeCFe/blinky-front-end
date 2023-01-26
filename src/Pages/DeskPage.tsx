@@ -9,6 +9,7 @@ import {
 } from "../generated-sources/openapi";
 import "../Grid.css";
 import { configuration } from "../components/Services";
+import Spinner from "../components/Spinner/Spinner";
 
 interface props {
   activeUser: string;
@@ -41,8 +42,7 @@ const DeskPage = (props: props) => {
     <div>
       {isLoading ? (
         <div>
-          <div>test</div>
-          <img className="Spinner" alt="" />
+          <Spinner />
         </div>
       ) : (
         <div className="grid-padding">
