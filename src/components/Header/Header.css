@@ -11,9 +11,9 @@
 
 .App-logo {
   padding: 60px;
-  text-shadow: -4px -4px 0 #000, 4px -4px 0 #000, -4px 4px 0 #000,
-    4px 4px 0 #000;
+  text-shadow: -6px -6px 0 #000, 6px -6px 0 #000, -6px 6px 0 #000,
+    6px 6px 0 #000;
   font-family: "Homer Simpson Revised", sans-serif;
   color: yellow;
-  font-size: 6em;
+  font-size: 8em;
 }
