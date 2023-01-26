@@ -1,18 +1,18 @@
 import React from "react";
 import "./LoginForm.css";
 
-const LoginForm = ({ isShowLogin }: any) => {
+const LoginForm = () => {
   return (
-    <div className={`${isShowLogin ? "active" : ""} show`}>
+    <div>
       <div className="login-form">
         <div className="form-box solid">
           <form>
             <h1 className="login-text">Sign In</h1>
-            <label>Username</label>
+            <label className="login-font">Username</label>
             <br></br>
             <input type="text" name="username" className="login-box" />
             <br></br>
-            <label>Password</label>
+            <label className="login-font">Password</label>
             <br></br>
             <input type="password" name="password" className="login-box" />
             <br></br>

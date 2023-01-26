@@ -12,7 +12,8 @@ const configuration = new Configuration({
 export const BookingScreen = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [isLogegdIn, setIsLoggedIn] = useState(false);
-  const [isShowLogin, setIsShowLogin] = useState(true);
+
+  let userName = "";
 
   useEffect(() => {
     const api = new BlinkyBackEndApi(configuration);
@@ -26,10 +27,11 @@ export const BookingScreen = () => {
       setIsLoading(false);
     }, 1);
   };
+
   return (
     <div className="background" onClick={loadingPage}>
       {!isLogegdIn ? (
-        <LoginForm isShowLogin={isShowLogin} />
+        <LoginForm />
       ) : (
         <div>{isLoading ? <Spinner /> : <DeskPage />} </div>
       )}

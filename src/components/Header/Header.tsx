@@ -1,4 +1,3 @@
-import SimpsonLogo from "../../Assets/Header.png";
 import "./Header.css";
 
 export const Header = () => {

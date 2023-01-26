@@ -52,6 +52,10 @@
   font-family: "Homer Simpson Revised", sans-serif;
 }
 
+.login-font {
+  font-family: "Homer Simpson Revised", sans-serif;
+}
+
 label {
   color: white;
   width: 100%;
@@ -91,6 +95,7 @@ label {
   outline: none;
   cursor: pointer;
   margin-bottom: 20px;
+  font-family: "Homer Simpson Revised", sans-serif;
 }
 
 .login-btn:hover {
