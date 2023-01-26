@@ -43,8 +43,8 @@ export const BookingScreen = () => {
             response?.desks.map((desk) => (
               <BookingDesk
                 key={desk.deskId}
-                id={desk.deskId || undefined}
-                avibility={desk.isAvailable || undefined}
+                id={desk.deskId as string}
+                availability={desk.isAvailable as boolean}
                 name={desk.assignedName || undefined}
                 setBookingMade={setBookingMade}
               />

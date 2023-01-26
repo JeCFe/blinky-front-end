@@ -11,8 +11,8 @@ import {
 import { configuration } from "../Services";
 
 export type deskInfo = {
-  id?: string;
-  avibility?: boolean;
+  id: string;
+  availability: boolean;
   name?: string;
   setBookingMade: React.Dispatch<React.SetStateAction<boolean>>;
 };
@@ -45,7 +45,7 @@ const BookingDesk = (props: deskInfo) => {
 
   return (
     <div className="item">
-      {props.avibility ? (
+      {props.availability ? (
         <div>
           <Bart />
           <button className="button-52" onClick={onClickHandler}>
