@@ -1,10 +1,9 @@
 import React from "react";
-import "./Bart.css";
-import Bart from "./Bart";
+import Bart from "../Bart/Bart";
 import "./Button.css";
 import "./ButtonNotAvailable.css";
 import "../../Grid.css";
-import Krusty from "./Krusty";
+import Krusty from "../Krusty/Krusty";
 
 export type deskInfo = {
   id: string;
