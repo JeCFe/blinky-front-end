@@ -5,22 +5,11 @@ import Spinner from "../components/Spinner/Spinner";
 import DeskPage from "./DeskPage";
 import LoginForm from "../components/LoginForm/LoginForm";
 
-const configuration = new Configuration({
-  basePath: "http://FargateALB-446711393.us-east-1.elb.amazonaws.com",
-});
-
 export const BookingScreen = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [isLogegdIn, setIsLoggedIn] = useState(false);
 
   let userName = "";
-
-  useEffect(() => {
-    const api = new BlinkyBackEndApi(configuration);
-    api.testGet().then((response) => {
-      console.log(response);
-    });
-  }, []);
 
   const loadingPage = () => {
     setTimeout(() => {
