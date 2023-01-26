@@ -2,7 +2,7 @@ import React from "react";
 import Bart from "../Bart/Bart";
 import "./Button.css";
 import "./ButtonNotAvailable.css";
-import "../../Grid.css";
+import "../../Pages/Grid.css";
 import Krusty from "../Krusty/Krusty";
 
 export type deskInfo = {
