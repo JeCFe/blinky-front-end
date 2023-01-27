@@ -1,58 +1,19 @@
-import React, { useEffect, useState } from "react";
-import BookingDesk from "../components/Desks/Desk";
-import {
-  BlinkyBackEndApi,
-  AllDesksResponse,
-} from "../generated-sources/openapi";
-import "../Grid.css";
-import { configuration } from "../components/Services";
+import React from "react";
+import { useEffect, useState } from "react";
+import { Configuration, BlinkyBackEndApi } from "../generated-sources/openapi";
+import Spinner from "../components/Spinner/Spinner";
+import DeskPage from "./DeskPage";
+import LoginForm from "../components/LoginForm/LoginForm";
 
 export const BookingScreen = () => {
-  const [response, setResponse] = useState<AllDesksResponse>();
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState();
-  const [bookingMade, setBookingMade] = useState(false);
-
-  const api = new BlinkyBackEndApi(configuration);
-  useEffect(() => {
-    api
-      .allDesksGetRaw()
-      .then(async (awaitResponse) => {
-        const response = await awaitResponse;
-        const data = await response.value();
-        setResponse(data);
-        setIsLoading(false);
-        setBookingMade(false);
-      })
-      .catch((error) => {
-        setError(error.response);
-        console.log(error.response);
-      });
-  }, [bookingMade]);
+  const [user, setUser] = useState<string | undefined>();
 
   return (
     <div>
-      {isLoading ? (
-        <div>
-          <div>test</div>
-          <img className="Spinner" alt="" />
-        </div>
+      {!user ? (
+        <LoginForm setUserName={setUser} />
       ) : (
-        <div className="grid">
-          {response?.desks ? (
-            response?.desks.map((desk) => (
-              <BookingDesk
-                key={desk.deskId}
-                id={desk.deskId as string}
-                availability={desk.isAvailable as boolean}
-                name={desk.assignedName || undefined}
-                setBookingMade={setBookingMade}
-              />
-            ))
-          ) : (
-            <div>{error}</div>
-          )}
-        </div>
+        <div>{<DeskPage activeUser={user} />} </div>
       )}
     </div>
   );

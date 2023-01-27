@@ -1,0 +1,22 @@
+.spinner-background {
+  background-color: #fcefa7;
+}
+
+.spinner-loading-info {
+  font: optional;
+  font-size: 100px;
+  font-family: "Homer Simpson Revised", sans-serif;
+}
+
+.rotate {
+  animation: rotation 2s infinite linear;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}

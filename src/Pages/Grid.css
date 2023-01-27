@@ -1,0 +1,23 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-gap: 30px;
+  background-color: #fcefa7;
+}
+
+.item {
+  min-height: 200px;
+  background-color: #eee;
+}
+
+.grid-padding {
+  padding-left: 2%;
+  padding-right: 2%;
+  padding-bottom: 2%;
+  padding-top: 5%;
+  background-color: #fcefa7;
+}
+
+.background {
+  background-color: #fcefa7;
+}
