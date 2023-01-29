@@ -16,38 +16,38 @@ import { exists, mapValues } from '../runtime';
 /**
  * 
  * @export
- * @interface Desk
+ * @interface Room
  */
-export interface Desk {
+export interface Room {
     /**
      * 
      * @type {string}
-     * @memberof Desk
+     * @memberof Room
      */
     id?: string;
     /**
      * 
      * @type {string}
-     * @memberof Desk
+     * @memberof Room
      */
     name: string;
 }
 
 /**
- * Check if a given object implements the Desk interface.
+ * Check if a given object implements the Room interface.
  */
-export function instanceOfDesk(value: object): boolean {
+export function instanceOfRoom(value: object): boolean {
     let isInstance = true;
     isInstance = isInstance && "name" in value;
 
     return isInstance;
 }
 
-export function DeskFromJSON(json: any): Desk {
-    return DeskFromJSONTyped(json, false);
+export function RoomFromJSON(json: any): Room {
+    return RoomFromJSONTyped(json, false);
 }
 
-export function DeskFromJSONTyped(json: any, ignoreDiscriminator: boolean): Desk {
+export function RoomFromJSONTyped(json: any, ignoreDiscriminator: boolean): Room {
     if ((json === undefined) || (json === null)) {
         return json;
     }
@@ -58,7 +58,7 @@ export function DeskFromJSONTyped(json: any, ignoreDiscriminator: boolean): Desk
     };
 }
 
-export function DeskToJSON(value?: Desk | null): any {
+export function RoomToJSON(value?: Room | null): any {
     if (value === undefined) {
         return undefined;
     }

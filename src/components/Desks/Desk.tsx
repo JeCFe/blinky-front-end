@@ -1,56 +1,36 @@
-import React from "react";
+import React, { useCallback } from "react";
 import Bart from "../Bart/Bart";
 import "./Button.css";
 import "./ButtonNotAvailable.css";
 import "../../Pages/Grid.css";
 import Krusty from "../Krusty/Krusty";
-import {
-  BlinkyBackEndApi,
-  Configuration,
-} from "../../generated-sources/openapi";
-import { configuration } from "../Services";
+import { DeskAvailability } from "../../generated-sources/openapi";
+import { useBook } from "../../Services/useBook";
 
 export type deskInfo = {
-  id: string;
-  availability: boolean;
-  name?: string;
+  deskData: DeskAvailability;
   setBookingMade: React.Dispatch<React.SetStateAction<boolean>>;
   activeUser: string;
+  date: string;
 };
 
 const BookingDesk = (props: deskInfo) => {
   const onClickHandler = () => {
-    const api = new BlinkyBackEndApi(configuration);
-
-    var req = {
-      deskId: props.id as string,
-      assignedName: props.activeUser,
-    };
-
-    api
-      .bookDeskPostRaw(req)
-      .then((response) => {
-        if (response.raw.status == 200) {
-          props.setBookingMade(true);
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-        if (error.response.status == 409) {
-          console.log("Tried to book a desk already booked");
-        } else {
-          console.log(error.response);
-        }
-      });
+    useBook({
+      deskId: props.deskData.desk?.id as string,
+      date: props.date,
+      userName: props.activeUser,
+      setBookingMade: props.setBookingMade,
+    });
   };
 
   return (
     <div className="item">
-      {props.availability ? (
+      {!props.deskData.assigned ? (
         <div>
           <Bart />
           <button className="button-52" onClick={onClickHandler}>
-            {props.id}
+            {props.deskData.desk?.name}
             <br />
             AVAILABLE
           </button>
@@ -59,9 +39,9 @@ const BookingDesk = (props: deskInfo) => {
         <div>
           <Krusty />
           <div className="button-52_NA">
-            {props.id}
+            {props.deskData.desk?.name}
             <br />
-            {props.name}
+            {props.deskData.assignedName}
           </div>{" "}
         </div>
       )}
