@@ -15,12 +15,12 @@ code {
 
 @import url("https://fonts.cdnfonts.com/css/homer-simpson-revised");
 .wrapper {
-  width: 80%;
+  width: 90%;
   margin: 0 auto;
   padding-top: 20px;
 }
 .container {
-  width: 80%;
+  width: 90%;
   text-align: center;
   word-wrap: break-word;
 }
@@ -31,4 +31,11 @@ code {
   justify-content: center;
   align-items: center;
   text-align: center;
+}
+
+.react-draggable {
+  width: 100px;
+}
+.react-draggable-dragged {
+  width: 100px;
 }

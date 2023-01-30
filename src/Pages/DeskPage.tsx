@@ -23,8 +23,22 @@ const DeskPage = () => {
           <Spinner />
         </div>
       ) : (
-        <div className="grid-padding">
-          <div className="grid">
+        <div
+          className="box"
+          style={{
+            height: "500px",
+            width: "100%",
+            position: "relative",
+            overflow: "auto",
+            padding: "0",
+            backgroundColor: "white",
+            border: "1px solid",
+          }}
+        >
+          <div
+            className="test"
+            style={{ height: "1000px", width: "1000px", padding: "10px" }}
+          >
             {data?.desksAvailability ? (
               data?.desksAvailability.map((desk) => (
                 <BookingDesk
@@ -41,7 +55,6 @@ const DeskPage = () => {
           </div>
         </div>
       )}
-      ;
     </div>
   );
 };
