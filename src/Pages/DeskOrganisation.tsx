@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Spinner } from "react-bootstrap";
+import { deserialize } from "v8";
 import {
   deskPositioning,
   MoveableDesk,
@@ -20,6 +21,7 @@ export const DeskOrganisation = () => {
             data.desksAvailability?.map((desk) => (
               <MoveableDesk
                 key={desk.desk?.id}
+                name={desk.desk?.name as string}
                 id={desk.desk?.id as string}
                 x={desk.desk?.posX as number}
                 y={desk.desk?.posY as number}
