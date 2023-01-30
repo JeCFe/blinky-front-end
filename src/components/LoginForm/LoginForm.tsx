@@ -1,19 +1,16 @@
-import { setMaxIdleHTTPParsers } from "http";
-import React, { SetStateAction, useState } from "react";
+import React, { useState } from "react";
 import "./LoginForm.css";
+import { useNavigate } from "react-router-dom";
 
-interface props {
-  setUserName: React.Dispatch<React.SetStateAction<string | undefined>>;
-}
-
-const LoginForm = (props: props) => {
+const LoginForm = () => {
   const [name, setName] = useState<string>();
+  const navigate = useNavigate();
 
   const updateName = (event: any) => {
     setName(event.target.value);
   };
   const handleSubmit = (event: any) => {
-    props.setUserName(name);
+    navigate(`/booking/${name}`);
   };
 
   return (
@@ -32,12 +29,7 @@ const LoginForm = (props: props) => {
               value={name as string}
               onChange={(e) => updateName(e)}
             />
-            <input
-              type="submit"
-              value="LOGIN"
-              className="login-btn"
-              onSubmit={handleSubmit}
-            />
+            <input type="submit" value="LOGIN" className="login-btn" />
           </form>
         </div>
       </div>

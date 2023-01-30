@@ -6,6 +6,7 @@ import "../../Pages/Grid.css";
 import Krusty from "../Krusty/Krusty";
 import { DeskAvailability } from "../../generated-sources/openapi";
 import { useBook } from "../../Services/useBook";
+import Draggable from "react-draggable";
 
 export type deskInfo = {
   deskData: DeskAvailability;
@@ -25,27 +26,29 @@ const BookingDesk = (props: deskInfo) => {
   };
 
   return (
-    <div className="item">
-      {!props.deskData.assigned ? (
-        <div>
-          <Bart />
-          <button className="button-52" onClick={onClickHandler}>
-            {props.deskData.desk?.name}
-            <br />
-            AVAILABLE
-          </button>
-        </div>
-      ) : (
-        <div>
-          <Krusty />
-          <div className="button-52_NA">
-            {props.deskData.desk?.name}
-            <br />
-            {props.deskData.assignedName}
-          </div>{" "}
-        </div>
-      )}
-    </div>
+    <Draggable disabled={true}>
+      <div className="item">
+        {!props.deskData.assigned ? (
+          <div>
+            <Bart />
+            <button className="button-52" onClick={onClickHandler}>
+              {props.deskData.desk?.name}
+              <br />
+              AVAILABLE
+            </button>
+          </div>
+        ) : (
+          <div>
+            <Krusty />
+            <div className="button-52_NA">
+              {props.deskData.desk?.name}
+              <br />
+              {props.deskData.assignedName}
+            </div>{" "}
+          </div>
+        )}
+      </div>
+    </Draggable>
   );
 };
 

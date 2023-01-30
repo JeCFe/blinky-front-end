@@ -8,8 +8,8 @@ import {
 interface props {
   RoomId: string;
   date?: string;
-  updateState: boolean;
-  setBookingMade: React.Dispatch<React.SetStateAction<boolean>>;
+  updateState?: boolean;
+  setBookingMade?: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export const useGetRoomWithIdAndDate = (
@@ -28,7 +28,9 @@ export const useGetRoomWithIdAndDate = (
         const data = await response.value();
         setData(data);
         setLoading(false);
-        props.setBookingMade(false);
+        if (props.setBookingMade) {
+          props.setBookingMade(false);
+        }
       })
       .catch((error) => {
         setError(error.response);

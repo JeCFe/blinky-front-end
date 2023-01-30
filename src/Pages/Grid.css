@@ -2,7 +2,6 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   grid-gap: 30px;
-  background-color: #fcefa7;
 }
 
 .item {
@@ -15,7 +14,6 @@
   padding-right: 2%;
   padding-bottom: 2%;
   padding-top: 5%;
-  background-color: #fcefa7;
 }
 
 .background {

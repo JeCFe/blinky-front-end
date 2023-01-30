@@ -31,6 +31,18 @@ export interface Desk {
      * @memberof Desk
      */
     name: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof Desk
+     */
+    posX: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof Desk
+     */
+    posY: number;
 }
 
 /**
@@ -39,6 +51,8 @@ export interface Desk {
 export function instanceOfDesk(value: object): boolean {
     let isInstance = true;
     isInstance = isInstance && "name" in value;
+    isInstance = isInstance && "posX" in value;
+    isInstance = isInstance && "posY" in value;
 
     return isInstance;
 }
@@ -55,6 +69,8 @@ export function DeskFromJSONTyped(json: any, ignoreDiscriminator: boolean): Desk
         
         'id': !exists(json, 'id') ? undefined : json['id'],
         'name': json['name'],
+        'posX': json['posX'],
+        'posY': json['posY'],
     };
 }
 
@@ -69,6 +85,8 @@ export function DeskToJSON(value?: Desk | null): any {
         
         'id': value.id,
         'name': value.name,
+        'posX': value.posX,
+        'posY': value.posY,
     };
 }
 

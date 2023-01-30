@@ -36,6 +36,12 @@ export interface RoomsRoomIdGetRequest {
     date?: string;
 }
 
+export interface UpdatePositionPostRequest {
+    deskId: string;
+    x: number;
+    y: number;
+}
+
 /**
  * 
  */
@@ -142,6 +148,53 @@ export class BlinkyBackEndApi extends runtime.BaseAPI {
     async roomsRoomIdGet(requestParameters: RoomsRoomIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ViewDesksResponse> {
         const response = await this.roomsRoomIdGetRaw(requestParameters, initOverrides);
         return await response.value();
+    }
+
+    /**
+     */
+    async updatePositionPostRaw(requestParameters: UpdatePositionPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+        if (requestParameters.deskId === null || requestParameters.deskId === undefined) {
+            throw new runtime.RequiredError('deskId','Required parameter requestParameters.deskId was null or undefined when calling updatePositionPost.');
+        }
+
+        if (requestParameters.x === null || requestParameters.x === undefined) {
+            throw new runtime.RequiredError('x','Required parameter requestParameters.x was null or undefined when calling updatePositionPost.');
+        }
+
+        if (requestParameters.y === null || requestParameters.y === undefined) {
+            throw new runtime.RequiredError('y','Required parameter requestParameters.y was null or undefined when calling updatePositionPost.');
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters.deskId !== undefined) {
+            queryParameters['deskId'] = requestParameters.deskId;
+        }
+
+        if (requestParameters.x !== undefined) {
+            queryParameters['x'] = requestParameters.x;
+        }
+
+        if (requestParameters.y !== undefined) {
+            queryParameters['y'] = requestParameters.y;
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/updatePosition`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     */
+    async updatePositionPost(requestParameters: UpdatePositionPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+        await this.updatePositionPostRaw(requestParameters, initOverrides);
     }
 
 }
