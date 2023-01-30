@@ -1,9 +1,9 @@
 import React, { useCallback } from "react";
-import Bart from "../Bart/Bart";
+
 import "./Button.css";
-import "./ButtonNotAvailable.css";
+
 import "../../Pages/Grid.css";
-import Krusty from "../Krusty/Krusty";
+
 import { DeskAvailability } from "../../generated-sources/openapi";
 import { useBook } from "../../Services/useBook";
 import Draggable, {
@@ -47,25 +47,23 @@ const BookingDesk = (props: deskInfo) => {
       }}
       onStop={stopHandler}
     >
-      <div className="item">
-        {!props.deskData.assigned ? (
-          <div>
-            <button className="button-52" onClick={onClickHandler}>
-              {props.deskData.desk?.name}
-              <br />
-              AVAILABLE
-            </button>
-          </div>
-        ) : (
-          <div>
-            <div className="button-52_NA">
-              {props.deskData.desk?.name}
-              <br />
-              {props.deskData.assignedName}
-            </div>{" "}
-          </div>
-        )}
-      </div>
+      {!props.deskData.assigned ? (
+        <div>
+          <button className="button-52" onClick={onClickHandler}>
+            {props.deskData.desk?.name}
+            <br />
+            AVAILABLE
+          </button>
+        </div>
+      ) : (
+        <div>
+          <div className="button-52_NA">
+            {props.deskData.desk?.name}
+            <br />
+            {props.deskData.assignedName}
+          </div>{" "}
+        </div>
+      )}
     </Draggable>
   );
 };

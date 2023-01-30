@@ -1,6 +1,5 @@
 import React from "react";
 import "./Button.css";
-import "./ButtonNotAvailable.css";
 import "../../Pages/Grid.css";
 import Draggable, { DraggableData, DraggableEvent } from "react-draggable";
 import { useUpdateDeskPosition } from "../../Services/useUpdateDeskPosition";
@@ -30,7 +29,7 @@ export const MoveableDesk = (props: deskPositioning) => {
       }}
     >
       <div>
-        <button className="button-52">
+        <button className="button-52 drag-padding">
           {props.name}
           <br />
           AVAILABLE
