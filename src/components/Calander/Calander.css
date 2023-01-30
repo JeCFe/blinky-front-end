@@ -1,0 +1,23 @@
+.date__controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  text-align: left;
+  font-size: 1em;
+}
+.date__control label {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  display: block;
+  color: black;
+  font-size: 2em;
+}
+.date__control input {
+  font: inherit;
+  padding: 1em;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  width: 20rem;
+  max-width: 100%;
+}

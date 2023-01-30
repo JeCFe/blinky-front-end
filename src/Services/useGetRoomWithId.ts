@@ -36,7 +36,7 @@ export const useGetRoomWithIdAndDate = (
         setError(error.response);
         console.log(error.response);
       });
-  }, [props.updateState]);
+  }, [props.updateState, props.date]);
 
   return [data, error, loading];
 };

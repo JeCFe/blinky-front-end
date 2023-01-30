@@ -22,6 +22,7 @@ export const MoveableDesk = (props: deskPositioning) => {
 
   return (
     <Draggable
+      grid={[5, 5]}
       onStop={stopDrag}
       defaultPosition={{
         x: props.x as number,
