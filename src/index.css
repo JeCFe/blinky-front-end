@@ -87,3 +87,7 @@ code {
   background-color: #98af61;
   color: rgb(156, 45, 184);
 }
+
+:root {
+  --simson-yellow-color: #ffe54c;
+}
