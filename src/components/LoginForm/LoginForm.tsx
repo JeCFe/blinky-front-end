@@ -29,7 +29,7 @@ const LoginForm = () => {
               value={name as string}
               onChange={(e) => updateName(e)}
             />
-            <input type="submit" value="LOGIN" className="login-btn" />
+            <input type="submit" value="LOGIN" className="button-btn" />
           </form>
         </div>
       </div>

@@ -79,31 +79,6 @@ label {
   font-family: "Homer Simpson Revised", sans-serif;
 }
 
-.login-btn {
-  width: 75%;
-  justify-content: center;
-  align-items: center;
-  background-color: rgb(48, 172, 251);
-  color: white;
-  margin-top: 5px;
-  border-radius: 20px;
-  border: none;
-  font-size: 15pt;
-  font-weight: 700;
-  transition: 1s;
-  outline: none;
-  cursor: pointer;
-  margin-bottom: 20px;
-  font-family: "Homer Simpson Revised", sans-serif;
-}
-
-.login-btn:hover {
-  transform: scale(1.03);
-  letter-spacing: 4px;
-  background-color: #7fffd4;
-  color: #1e90ff;
-}
-
 .show {
   display: block;
   transition: 800ms;
