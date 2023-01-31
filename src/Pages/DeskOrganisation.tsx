@@ -3,6 +3,7 @@ import react from "react";
 import { MoveableDesk } from "../components/Desks/MoveableDesk";
 import { DefaultRoomId } from "../Services/DefaultRoomId";
 import { useGetRoomWithIdAndDate } from "../Services/useGetRoomWithId";
+import BackButton from "../components/BackButton/BackButton";
 
 export const DeskOrganisation = () => {
   const [data, error, loading] = useGetRoomWithIdAndDate({
@@ -12,6 +13,7 @@ export const DeskOrganisation = () => {
 
   return (
     <>
+      <BackButton />
       <div className="center content-wrapper">
         <div
           className="box"

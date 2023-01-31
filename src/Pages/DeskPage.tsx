@@ -6,6 +6,7 @@ import { useGetRoomWithIdAndDate } from "../Services/useGetRoomWithId";
 import { useParams } from "react-router";
 import { Calander } from "../components/Calander/Calander";
 import { DefaultRoomId } from "../Services/DefaultRoomId";
+import BackButton from "../components/BackButton/BackButton";
 
 const DeskPage = () => {
   const { activeUser } = useParams();
@@ -26,6 +27,7 @@ const DeskPage = () => {
         </div>
       ) : (
         <>
+          <BackButton />
           <div className="center content-wrapper">
             <Calander setDate={setDate} />
           </div>
