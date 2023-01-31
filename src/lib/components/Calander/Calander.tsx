@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { dateToday } from "./GetTodaysDate";
 import "./Calander.css";
+import { CommonButton } from "../Buttons/CommonButton";
 
 interface props {
   setDate: React.Dispatch<React.SetStateAction<string>>;
@@ -32,7 +33,7 @@ export const Calander = (props: props) => {
             />
           </div>
         </div>
-        <input type="submit" value="SELECT DATE" className="button-btn" />
+        <CommonButton type="submit" value="SELECT DATE" />
       </form>
     </>
   );

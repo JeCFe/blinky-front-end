@@ -8,7 +8,8 @@
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
-    animation: App-logo-spin infinite 2s linear;
+    animation: App-logo-spin infinite 3s linear;
+    animation-timing-function: ease-in-out;
   }
 }
 

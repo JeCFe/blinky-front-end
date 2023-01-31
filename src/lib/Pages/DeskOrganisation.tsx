@@ -1,5 +1,5 @@
 import react from "react";
-import BackButton from "../components/BackButton/BackButton";
+import BackButton from "../components/Buttons/BackButton";
 
 import { MoveableDesk } from "../components/Desks/MoveableDesk";
 import { DefaultRoomId } from "../Services/DefaultRoomId";
@@ -13,7 +13,6 @@ export const DeskOrganisation = () => {
 
   return (
     <>
-      <BackButton />
       <div className="center content-wrapper">
         <div
           className="box"
@@ -47,6 +46,7 @@ export const DeskOrganisation = () => {
           </div>
         </div>
       </div>
+      <BackButton />
     </>
   );
 };

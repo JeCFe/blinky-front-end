@@ -48,11 +48,6 @@
   justify-content: center;
   align-items: center;
   padding-top: 5vh;
-  font-family: "Homer Simpson Revised", sans-serif;
-}
-
-.login-font {
-  font-family: "Homer Simpson Revised", sans-serif;
 }
 
 label {
@@ -76,7 +71,6 @@ label {
   background: white;
   transition: 1s;
   outline: none;
-  font-family: "Homer Simpson Revised", sans-serif;
 }
 
 .show {
