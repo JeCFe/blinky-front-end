@@ -6,6 +6,7 @@ import Spinner from "../components/Spinner/Spinner";
 import { Calander } from "../components/Calander/Calander";
 import BookingDesk from "../components/Desks/Desk";
 import { useParams } from "react-router";
+import BackButton from "../components/BackButton/BackButton";
 
 const DeskPage = () => {
   const { activeUser } = useParams();
@@ -26,6 +27,7 @@ const DeskPage = () => {
         </div>
       ) : (
         <>
+          <BackButton />
           <div className="center content-wrapper">
             <Calander setDate={setDate} />
           </div>

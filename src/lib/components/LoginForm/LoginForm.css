@@ -48,6 +48,11 @@
   justify-content: center;
   align-items: center;
   padding-top: 5vh;
+  font-family: "Homer Simpson Revised", sans-serif;
+}
+
+.login-font {
+  font-family: "Homer Simpson Revised", sans-serif;
 }
 
 label {
@@ -71,9 +76,16 @@ label {
   background: white;
   transition: 1s;
   outline: none;
+  font-family: "Homer Simpson Revised", sans-serif;
 }
 
-.login-btn {
+.show {
+  display: block;
+  transition: 800ms;
+  opacity: 1;
+}
+
+.button-btn {
   width: 75%;
   justify-content: center;
   align-items: center;
@@ -88,17 +100,4 @@ label {
   outline: none;
   cursor: pointer;
   margin-bottom: 20px;
-}
-
-.login-btn:hover {
-  transform: scale(1.03);
-  letter-spacing: 4px;
-  background-color: #7fffd4;
-  color: #1e90ff;
-}
-
-.show {
-  display: block;
-  transition: 800ms;
-  opacity: 1;
 }

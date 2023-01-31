@@ -32,7 +32,7 @@ export const Calander = (props: props) => {
             />
           </div>
         </div>
-        <input type="submit" value="SELECT DATE" className="login-btn" />
+        <input type="submit" value="SELECT DATE" className="button-btn" />
       </form>
     </>
   );
