@@ -13,12 +13,8 @@ export type deskPositioning = {
 
 export const MoveableDesk = (props: deskPositioning) => {
   const stopDrag = (e: DraggableEvent, data: DraggableData) => {
-    console.log(props.id, data.x, data.y);
     useUpdateDeskPosition({ deskId: props.id, posX: data.x, posY: data.y });
-    console.log("API OVER");
-    //Api call to update desk positioning
   };
-  console.log(props.name);
 
   return (
     <Draggable
