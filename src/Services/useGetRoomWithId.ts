@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import { configuration } from "../components/Services";
+
 import {
   BlinkyBackEndApi,
   ViewDesksResponse,
 } from "../generated-sources/openapi";
+import { configuration } from "./Services";
 
 interface props {
   RoomId: string;

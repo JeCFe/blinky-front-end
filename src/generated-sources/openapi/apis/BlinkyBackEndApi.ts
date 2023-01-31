@@ -31,6 +31,11 @@ export interface BookPostRequest {
     date: string;
 }
 
+export interface GenerateRoomPostRequest {
+    roomName: string;
+    amountOfDesks: number;
+}
+
 export interface RoomsRoomIdGetRequest {
     roomId: string;
     date?: string;
@@ -92,6 +97,45 @@ export class BlinkyBackEndApi extends runtime.BaseAPI {
      */
     async bookPost(requestParameters: BookPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
         await this.bookPostRaw(requestParameters, initOverrides);
+    }
+
+    /**
+     */
+    async generateRoomPostRaw(requestParameters: GenerateRoomPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+        if (requestParameters.roomName === null || requestParameters.roomName === undefined) {
+            throw new runtime.RequiredError('roomName','Required parameter requestParameters.roomName was null or undefined when calling generateRoomPost.');
+        }
+
+        if (requestParameters.amountOfDesks === null || requestParameters.amountOfDesks === undefined) {
+            throw new runtime.RequiredError('amountOfDesks','Required parameter requestParameters.amountOfDesks was null or undefined when calling generateRoomPost.');
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters.roomName !== undefined) {
+            queryParameters['RoomName'] = requestParameters.roomName;
+        }
+
+        if (requestParameters.amountOfDesks !== undefined) {
+            queryParameters['AmountOfDesks'] = requestParameters.amountOfDesks;
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/GenerateRoom`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     */
+    async generateRoomPost(requestParameters: GenerateRoomPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+        await this.generateRoomPostRaw(requestParameters, initOverrides);
     }
 
     /**

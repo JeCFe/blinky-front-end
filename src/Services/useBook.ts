@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { configuration } from "../components/Services";
+import { configuration } from "./Services";
 import {
   BlinkyBackEndApi,
   ViewDesksResponse,

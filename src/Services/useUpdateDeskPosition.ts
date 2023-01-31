@@ -1,9 +1,6 @@
 import { useEffect, useState } from "react";
-import { configuration } from "../components/Services";
-import {
-  BlinkyBackEndApi,
-  ViewDesksResponse,
-} from "../generated-sources/openapi";
+import { configuration } from "./Services";
+import { BlinkyBackEndApi } from "../generated-sources/openapi";
 
 interface props {
   deskId: string;

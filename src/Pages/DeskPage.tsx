@@ -1,18 +1,18 @@
-import React, { useState, useEffect } from "react";
-import Desk from "../components/Desks/Desk";
+import React, { useState } from "react";
 import BookingDesk from "../components/Desks/Desk";
 import "../Grid.css";
 import Spinner from "../components/Spinner/Spinner";
 import { useGetRoomWithIdAndDate } from "../Services/useGetRoomWithId";
 import { useParams } from "react-router";
 import { Calander } from "../components/Calander/Calander";
+import { DefaultRoomId } from "../Services/DefaultRoomId";
 
 const DeskPage = () => {
   const { activeUser } = useParams();
   const [bookingMade, setBookingMade] = useState(false);
   const [date, setDate] = useState("2023-10-10");
   const [data, error, loading] = useGetRoomWithIdAndDate({
-    RoomId: "08db009b-7d6f-4900-8cbb-4acea8e55870",
+    RoomId: DefaultRoomId,
     date: date,
     updateState: bookingMade,
     setBookingMade: setBookingMade,

@@ -1,16 +1,12 @@
-import { useEffect, useState } from "react";
-import { Spinner } from "react-bootstrap";
-import { deserialize } from "v8";
-import { Calander } from "../components/Calander/Calander";
-import {
-  deskPositioning,
-  MoveableDesk,
-} from "../components/Desks/MoveableDesk";
+import react from "react";
+
+import { MoveableDesk } from "../components/Desks/MoveableDesk";
+import { DefaultRoomId } from "../Services/DefaultRoomId";
 import { useGetRoomWithIdAndDate } from "../Services/useGetRoomWithId";
 
 export const DeskOrganisation = () => {
   const [data, error, loading] = useGetRoomWithIdAndDate({
-    RoomId: "08db009b-7d6f-4900-8cbb-4acea8e55870",
+    RoomId: DefaultRoomId,
     date: "2023-10-10",
   });
 
