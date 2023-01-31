@@ -18,7 +18,7 @@
 
 .button-52::after {
   content: "";
-  background-color: #ffe54c;
+  background-color: var(--simson-yellow-color);
   width: 100%;
   z-index: -1;
   position: absolute;
