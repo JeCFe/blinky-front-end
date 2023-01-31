@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { configuration } from "./Services";
-import { BlinkyBackEndApi } from "../generated-sources/openapi";
+import { BlinkyBackEndApi } from "../../generated-sources/openapi";
 
 interface props {
   deskId: string;

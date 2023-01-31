@@ -1,9 +1,6 @@
 import { useEffect, useState } from "react";
 import { configuration } from "./Services";
-import {
-  BlinkyBackEndApi,
-  ViewDesksResponse,
-} from "../generated-sources/openapi";
+import { BlinkyBackEndApi } from "../../generated-sources/openapi";
 
 interface props {
   deskId: string;
@@ -25,12 +22,8 @@ export const useBook = (props: props) => {
     })
     .then(() => {
       props.setBookingMade(true);
-      //setLoading(false);
     })
     .catch((error) => {
-      //setError(error.response);
       console.log(error.response);
     });
-
-  //return [error, loading];
 };

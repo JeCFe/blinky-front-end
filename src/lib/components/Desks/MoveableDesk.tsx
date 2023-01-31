@@ -1,8 +1,7 @@
 import React from "react";
-import "./Button.css";
-import "../../Pages/Grid.css";
 import Draggable, { DraggableData, DraggableEvent } from "react-draggable";
 import { useUpdateDeskPosition } from "../../Services/useUpdateDeskPosition";
+import "./Button.css";
 
 export type deskPositioning = {
   id: string;

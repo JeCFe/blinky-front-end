@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import {
   BlinkyBackEndApi,
   ViewDesksResponse,
-} from "../generated-sources/openapi";
+} from "../../generated-sources/openapi";
 import { configuration } from "./Services";
 
 interface props {

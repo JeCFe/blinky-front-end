@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import { isPropertySignature } from "typescript";
-import "./Calander.css";
 import { dateToday } from "./GetTodaysDate";
+import "./Calander.css";
 
 interface props {
   setDate: React.Dispatch<React.SetStateAction<string>>;
