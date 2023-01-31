@@ -11,7 +11,9 @@ export const LoginScreen = () => {
   return (
     <div>
       <LoginForm />
-      <button onClick={clickHandler}>Go to desk organisation</button>
+      <button onClick={clickHandler} className="button-btn-org">
+        Go to desk organisation
+      </button>
     </div>
   );
 };
