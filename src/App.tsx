@@ -1,16 +1,17 @@
 import react from "react";
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
-import { Header } from "./components/Header/Header";
-import DeskPage from "./Pages/DeskPage";
-import { DeskOrganisation } from "./Pages/DeskOrganisation";
-import { LoginScreen } from "./Pages/LoginScreen";
-import { Footer } from "./Footer/Footer";
+import DeskPage from "./lib/Pages/DeskPage";
+import { DeskOrganisation } from "./lib/Pages/DeskOrganisation";
+import { LoginScreen } from "./lib/Pages/LoginScreen";
+import { Header } from "./lib/components/Header/Header";
+import { Footer } from "./lib/components/Footer/Footer";
 
 function App() {
   return (
     <div className="App">
       <Header />
+
       <div className="wrapper">
         <div className="container">
           <Routes>

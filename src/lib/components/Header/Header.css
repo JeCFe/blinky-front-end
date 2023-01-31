@@ -1,0 +1,36 @@
+.App-logo {
+  padding: 60px;
+  text-shadow: -6px -6px 0 #000, 6px -6px 0 #000, -6px 6px 0 #000,
+    6px 6px 0 #000;
+  color: yellow;
+  font-size: 4em;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 2s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  max-height: 15vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+@keyframes App-logo-spin {
+  0% {
+    transform: rotate(-10deg);
+  }
+  50% {
+    transform: rotate(10deg);
+  }
+  100% {
+    transform: rotate(-10deg);
+  }
+}
