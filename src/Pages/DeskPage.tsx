@@ -1,70 +1,69 @@
-import React, { useState, useEffect } from "react";
-import "../Pages/Grid.css";
-import Desk from "../components/Desks/Desk";
-import { deskInfo } from "../components/Desks/Desk";
+import React, { useState } from "react";
 import BookingDesk from "../components/Desks/Desk";
-import {
-  BlinkyBackEndApi,
-  AllDesksResponse,
-} from "../generated-sources/openapi";
 import "../Grid.css";
-import { configuration } from "../components/Services";
 import Spinner from "../components/Spinner/Spinner";
+import { useGetRoomWithIdAndDate } from "../Services/useGetRoomWithId";
+import { useParams } from "react-router";
+import { Calander } from "../components/Calander/Calander";
+import { DefaultRoomId } from "../Services/DefaultRoomId";
 
-interface props {
-  activeUser: string;
-}
-
-const DeskPage = (props: props) => {
-  const [response, setResponse] = useState<AllDesksResponse>();
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState();
+const DeskPage = () => {
+  const { activeUser } = useParams();
   const [bookingMade, setBookingMade] = useState(false);
-
-  const api = new BlinkyBackEndApi(configuration);
-  useEffect(() => {
-    api
-      .allDesksGetRaw()
-      .then(async (awaitResponse) => {
-        const response = await awaitResponse;
-        const data = await response.value();
-        setResponse(data);
-        setIsLoading(false);
-        setBookingMade(false);
-      })
-      .catch((error) => {
-        setError(error.response);
-        console.log(error.response);
-      });
-  }, [bookingMade]);
+  const [date, setDate] = useState("2023-10-10");
+  const [data, error, loading] = useGetRoomWithIdAndDate({
+    RoomId: DefaultRoomId,
+    date: date,
+    updateState: bookingMade,
+    setBookingMade: setBookingMade,
+  });
 
   return (
     <div>
-      {isLoading ? (
+      {loading ? (
         <div>
           <Spinner />
         </div>
       ) : (
-        <div className="grid-padding">
-          <div className="grid">
-            {response?.desks ? (
-              response?.desks.map((desk) => (
-                <BookingDesk
-                  activeUser={props.activeUser}
-                  key={desk.deskId}
-                  id={desk.deskId as string}
-                  availability={desk.isAvailable as boolean}
-                  name={desk.assignedName || undefined}
-                  setBookingMade={setBookingMade}
-                />
-              ))
-            ) : (
-              <div>{error}</div>
-            )}
+        <>
+          <div className="center content-wrapper">
+            <Calander setDate={setDate} />
           </div>
-        </div>
+          <div className="center content-wrapper">
+            <div
+              className="box"
+              style={{
+                height: "500px",
+                width: "100%",
+                position: "relative",
+                overflow: "auto",
+                padding: "0",
+                backgroundColor: "white",
+                border: "1px solid",
+              }}
+            >
+              <div
+                className="test"
+                style={{ height: "1000px", width: "1000px", padding: "10px" }}
+              >
+                {data?.desksAvailability ? (
+                  data?.desksAvailability.map((desk) => (
+                    <BookingDesk
+                      key={desk.desk?.id}
+                      date={date}
+                      activeUser={activeUser as string}
+                      setBookingMade={setBookingMade}
+                      deskData={desk}
+                    />
+                  ))
+                ) : (
+                  <div>{error}</div>
+                )}
+              </div>
+            </div>
+          </div>
+        </>
       )}
-      ;
     </div>
   );
 };

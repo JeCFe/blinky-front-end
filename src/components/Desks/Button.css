@@ -1,6 +1,7 @@
 .button-52 {
   font-size: 16px;
   font-weight: 200;
+  width: 200px;
   letter-spacing: 1px;
   padding: 13px 20px 13px;
   outline: 0;
@@ -28,6 +29,21 @@
 }
 
 .button-52:hover:after {
+  top: 0px;
+  left: 0px;
+}
+
+.button-52_NA {
+  width: 200px;
+  font-size: 16px;
+  font-weight: 200;
+  letter-spacing: 1px;
+  padding: 13px 20px 13px;
+  outline: 0;
+  border: 1px solid black;
+  background-color: rgb(173, 63, 63);
+  font-family: "Homer Simpson Revised", sans-serif;
+  z-index: 1;
   top: 0px;
   left: 0px;
 }

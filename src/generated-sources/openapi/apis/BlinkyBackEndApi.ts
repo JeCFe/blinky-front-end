@@ -15,27 +15,36 @@
 
 import * as runtime from '../runtime';
 import type {
-  AllDesksResponse,
-  Desk,
+  RoomsResponse,
+  ViewDesksResponse,
 } from '../models';
 import {
-    AllDesksResponseFromJSON,
-    AllDesksResponseToJSON,
-    DeskFromJSON,
-    DeskToJSON,
+    RoomsResponseFromJSON,
+    RoomsResponseToJSON,
+    ViewDesksResponseFromJSON,
+    ViewDesksResponseToJSON,
 } from '../models';
 
-export interface AddDeskPostRequest {
-    desk: Desk;
-}
-
-export interface BookDeskPostRequest {
+export interface BookPostRequest {
     deskId: string;
-    assignedName: string;
+    userName: string;
+    date: string;
 }
 
-export interface RemoveBookingPostRequest {
-    desk: Desk;
+export interface GenerateRoomPostRequest {
+    roomName: string;
+    amountOfDesks: number;
+}
+
+export interface RoomsRoomIdGetRequest {
+    roomId: string;
+    date?: string;
+}
+
+export interface UpdatePositionPostRequest {
+    deskId: string;
+    x: number;
+    y: number;
 }
 
 /**
@@ -45,83 +54,37 @@ export class BlinkyBackEndApi extends runtime.BaseAPI {
 
     /**
      */
-    async addDeskPostRaw(requestParameters: AddDeskPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
-        if (requestParameters.desk === null || requestParameters.desk === undefined) {
-            throw new runtime.RequiredError('desk','Required parameter requestParameters.desk was null or undefined when calling addDeskPost.');
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        headerParameters['Content-Type'] = 'application/json';
-
-        const response = await this.request({
-            path: `/AddDesk`,
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-            body: DeskToJSON(requestParameters.desk),
-        }, initOverrides);
-
-        return new runtime.VoidApiResponse(response);
-    }
-
-    /**
-     */
-    async addDeskPost(requestParameters: AddDeskPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
-        await this.addDeskPostRaw(requestParameters, initOverrides);
-    }
-
-    /**
-     */
-    async allDesksGetRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AllDesksResponse>> {
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        const response = await this.request({
-            path: `/AllDesks`,
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => AllDesksResponseFromJSON(jsonValue));
-    }
-
-    /**
-     */
-    async allDesksGet(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AllDesksResponse> {
-        const response = await this.allDesksGetRaw(initOverrides);
-        return await response.value();
-    }
-
-    /**
-     */
-    async bookDeskPostRaw(requestParameters: BookDeskPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+    async bookPostRaw(requestParameters: BookPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
         if (requestParameters.deskId === null || requestParameters.deskId === undefined) {
-            throw new runtime.RequiredError('deskId','Required parameter requestParameters.deskId was null or undefined when calling bookDeskPost.');
+            throw new runtime.RequiredError('deskId','Required parameter requestParameters.deskId was null or undefined when calling bookPost.');
         }
 
-        if (requestParameters.assignedName === null || requestParameters.assignedName === undefined) {
-            throw new runtime.RequiredError('assignedName','Required parameter requestParameters.assignedName was null or undefined when calling bookDeskPost.');
+        if (requestParameters.userName === null || requestParameters.userName === undefined) {
+            throw new runtime.RequiredError('userName','Required parameter requestParameters.userName was null or undefined when calling bookPost.');
+        }
+
+        if (requestParameters.date === null || requestParameters.date === undefined) {
+            throw new runtime.RequiredError('date','Required parameter requestParameters.date was null or undefined when calling bookPost.');
         }
 
         const queryParameters: any = {};
 
         if (requestParameters.deskId !== undefined) {
-            queryParameters['DeskId'] = requestParameters.deskId;
+            queryParameters['deskId'] = requestParameters.deskId;
         }
 
-        if (requestParameters.assignedName !== undefined) {
-            queryParameters['AssignedName'] = requestParameters.assignedName;
+        if (requestParameters.userName !== undefined) {
+            queryParameters['userName'] = requestParameters.userName;
+        }
+
+        if (requestParameters.date !== undefined) {
+            queryParameters['date'] = requestParameters.date;
         }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
         const response = await this.request({
-            path: `/BookDesk`,
+            path: `/book`,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
@@ -132,29 +95,38 @@ export class BlinkyBackEndApi extends runtime.BaseAPI {
 
     /**
      */
-    async bookDeskPost(requestParameters: BookDeskPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
-        await this.bookDeskPostRaw(requestParameters, initOverrides);
+    async bookPost(requestParameters: BookPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+        await this.bookPostRaw(requestParameters, initOverrides);
     }
 
     /**
      */
-    async removeBookingPostRaw(requestParameters: RemoveBookingPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
-        if (requestParameters.desk === null || requestParameters.desk === undefined) {
-            throw new runtime.RequiredError('desk','Required parameter requestParameters.desk was null or undefined when calling removeBookingPost.');
+    async generateRoomPostRaw(requestParameters: GenerateRoomPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+        if (requestParameters.roomName === null || requestParameters.roomName === undefined) {
+            throw new runtime.RequiredError('roomName','Required parameter requestParameters.roomName was null or undefined when calling generateRoomPost.');
+        }
+
+        if (requestParameters.amountOfDesks === null || requestParameters.amountOfDesks === undefined) {
+            throw new runtime.RequiredError('amountOfDesks','Required parameter requestParameters.amountOfDesks was null or undefined when calling generateRoomPost.');
         }
 
         const queryParameters: any = {};
 
+        if (requestParameters.roomName !== undefined) {
+            queryParameters['RoomName'] = requestParameters.roomName;
+        }
+
+        if (requestParameters.amountOfDesks !== undefined) {
+            queryParameters['AmountOfDesks'] = requestParameters.amountOfDesks;
+        }
+
         const headerParameters: runtime.HTTPHeaders = {};
 
-        headerParameters['Content-Type'] = 'application/json';
-
         const response = await this.request({
-            path: `/RemoveBooking`,
+            path: `/GenerateRoom`,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: DeskToJSON(requestParameters.desk),
         }, initOverrides);
 
         return new runtime.VoidApiResponse(response);
@@ -162,8 +134,111 @@ export class BlinkyBackEndApi extends runtime.BaseAPI {
 
     /**
      */
-    async removeBookingPost(requestParameters: RemoveBookingPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
-        await this.removeBookingPostRaw(requestParameters, initOverrides);
+    async generateRoomPost(requestParameters: GenerateRoomPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+        await this.generateRoomPostRaw(requestParameters, initOverrides);
+    }
+
+    /**
+     */
+    async roomsGetRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<RoomsResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/Rooms`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => RoomsResponseFromJSON(jsonValue));
+    }
+
+    /**
+     */
+    async roomsGet(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<RoomsResponse> {
+        const response = await this.roomsGetRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     */
+    async roomsRoomIdGetRaw(requestParameters: RoomsRoomIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ViewDesksResponse>> {
+        if (requestParameters.roomId === null || requestParameters.roomId === undefined) {
+            throw new runtime.RequiredError('roomId','Required parameter requestParameters.roomId was null or undefined when calling roomsRoomIdGet.');
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters.date !== undefined) {
+            queryParameters['date'] = requestParameters.date;
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/Rooms/{roomId}`.replace(`{${"roomId"}}`, encodeURIComponent(String(requestParameters.roomId))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ViewDesksResponseFromJSON(jsonValue));
+    }
+
+    /**
+     */
+    async roomsRoomIdGet(requestParameters: RoomsRoomIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ViewDesksResponse> {
+        const response = await this.roomsRoomIdGetRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     */
+    async updatePositionPostRaw(requestParameters: UpdatePositionPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+        if (requestParameters.deskId === null || requestParameters.deskId === undefined) {
+            throw new runtime.RequiredError('deskId','Required parameter requestParameters.deskId was null or undefined when calling updatePositionPost.');
+        }
+
+        if (requestParameters.x === null || requestParameters.x === undefined) {
+            throw new runtime.RequiredError('x','Required parameter requestParameters.x was null or undefined when calling updatePositionPost.');
+        }
+
+        if (requestParameters.y === null || requestParameters.y === undefined) {
+            throw new runtime.RequiredError('y','Required parameter requestParameters.y was null or undefined when calling updatePositionPost.');
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters.deskId !== undefined) {
+            queryParameters['deskId'] = requestParameters.deskId;
+        }
+
+        if (requestParameters.x !== undefined) {
+            queryParameters['x'] = requestParameters.x;
+        }
+
+        if (requestParameters.y !== undefined) {
+            queryParameters['y'] = requestParameters.y;
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/updatePosition`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     */
+    async updatePositionPost(requestParameters: UpdatePositionPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+        await this.updatePositionPostRaw(requestParameters, initOverrides);
     }
 
 }
