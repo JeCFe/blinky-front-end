@@ -79,6 +79,7 @@ code {
   cursor: pointer;
   margin-bottom: 20px;
   font-family: "Homer Simpson Revised", sans-serif;
+  max-width: 7em;
 }
 
 .button-btn-org:hover {
