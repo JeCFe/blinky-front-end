@@ -3,7 +3,9 @@ import "./Header.css";
 export const Header = () => {
   return (
     <header className="App-header">
-      <p className="App-logo">BLINKY</p>
+      <div className="App-logo">
+        <div className="center-header">BLINKY</div>
+      </div>
     </header>
   );
 };
