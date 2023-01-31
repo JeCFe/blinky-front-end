@@ -2,7 +2,7 @@
   padding: 60px;
   text-shadow: -6px -6px 0 #000, 6px -6px 0 #000, -6px 6px 0 #000,
     6px 6px 0 #000;
-  color: yellow;
+  color: var(--simson-yellow-color);
   font-size: 4em;
 }
 
