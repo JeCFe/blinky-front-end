@@ -6,11 +6,12 @@ import { useGetRoomWithIdAndDate } from "../Services/useGetRoomWithId";
 import { useParams } from "react-router";
 import { Calander } from "../components/Calander/Calander";
 import { DefaultRoomId } from "../Services/DefaultRoomId";
+import { dateToday } from "../components/Calander/GetTodaysDate";
 
 const DeskPage = () => {
   const { activeUser } = useParams();
   const [bookingMade, setBookingMade] = useState(false);
-  const [date, setDate] = useState("2023-10-10");
+  const [date, setDate] = useState(dateToday);
   const [data, error, loading] = useGetRoomWithIdAndDate({
     RoomId: DefaultRoomId,
     date: date,

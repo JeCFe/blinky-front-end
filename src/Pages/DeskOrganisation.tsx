@@ -1,4 +1,5 @@
 import react from "react";
+import { dateToday } from "../components/Calander/GetTodaysDate";
 
 import { MoveableDesk } from "../components/Desks/MoveableDesk";
 import Spinner from "../components/Spinner/Spinner";
@@ -8,7 +9,7 @@ import { useGetRoomWithIdAndDate } from "../Services/useGetRoomWithId";
 export const DeskOrganisation = () => {
   const [data, error, loading] = useGetRoomWithIdAndDate({
     RoomId: DefaultRoomId,
-    date: "2023-10-10",
+    date: dateToday,
   });
 
   return (

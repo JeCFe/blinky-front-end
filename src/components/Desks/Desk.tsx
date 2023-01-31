@@ -33,11 +33,6 @@ const BookingDesk = (props: deskInfo) => {
     props.deskData.desk?.posX,
     props.deskData.desk?.posY
   );
-
-  const stopHandler = (e: DraggableEvent, data: DraggableData) => {
-    console.log(data.x, data.y);
-  };
-
   return (
     <Draggable
       disabled={true}
@@ -45,7 +40,6 @@ const BookingDesk = (props: deskInfo) => {
         x: props.deskData.desk?.posX as number,
         y: props.deskData.desk?.posY as number,
       }}
-      onStop={stopHandler}
     >
       {!props.deskData.assigned ? (
         <div>

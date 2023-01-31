@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { isPropertySignature } from "typescript";
 import "./Calander.css";
+import { dateToday } from "./GetTodaysDate";
 
 interface props {
   setDate: React.Dispatch<React.SetStateAction<string>>;
@@ -15,9 +16,7 @@ export const Calander = (props: props) => {
 
   const handleSubmit = (event: any) => {
     event.preventDefault();
-    console.log(enteredDate);
     props.setDate(enteredDate);
-    console.log("Calander", enteredDate);
   };
   return (
     <>
@@ -27,8 +26,8 @@ export const Calander = (props: props) => {
             <label>Date</label>
             <input
               type="date"
-              min="2019-01-01"
-              max="2023-12-31"
+              min={dateToday}
+              max="2024-12-31"
               value={enteredDate}
               onChange={dateChangeHandler}
             />
