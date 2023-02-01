@@ -1,31 +1,9 @@
-.loginicon {
-  position: absolute;
-  width: 80px;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bolder;
-  color: black;
-  height: 40px;
-  left: 85%;
-  top: 10px;
-  background: #2bc6ff;
-  border-radius: 24px;
-  cursor: pointer;
-}
-
-.loginicon:hover {
-  color: white;
-}
-
 .login-form {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
 .form-box {
   margin-top: 7vh;
   opacity: 80%;
@@ -48,6 +26,7 @@
   justify-content: center;
   align-items: center;
   padding-top: 5vh;
+  padding-bottom: 10px;
 }
 
 label {
@@ -71,27 +50,4 @@ label {
   background: white;
   transition: 1s;
   outline: none;
-}
-
-.show {
-  display: block;
-  transition: 800ms;
-  opacity: 1;
-}
-
-.button-btn {
-  width: 75%;
-  justify-content: center;
-  align-items: center;
-  background-color: rgb(48, 172, 251);
-  color: white;
-  margin-top: 5px;
-  border-radius: 20px;
-  border: none;
-  font-size: 15pt;
-  font-weight: 700;
-  transition: 1s;
-  outline: none;
-  cursor: pointer;
-  margin-bottom: 20px;
 }
