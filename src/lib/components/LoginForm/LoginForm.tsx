@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./LoginForm.css";
 import { useNavigate } from "react-router-dom";
+import { CommonButton } from "../Buttons/CommonButton";
 
 const LoginForm = () => {
   const [name, setName] = useState<string>();
@@ -29,7 +30,7 @@ const LoginForm = () => {
               value={name as string}
               onChange={(e) => updateName(e)}
             />
-            <input type="submit" value="LOGIN" className="login-btn" />
+            <CommonButton type="submit" value="LOGIN" />
           </form>
         </div>
       </div>

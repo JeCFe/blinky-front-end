@@ -2,13 +2,15 @@
   padding: 60px;
   text-shadow: -6px -6px 0 #000, 6px -6px 0 #000, -6px 6px 0 #000,
     6px 6px 0 #000;
-  color: yellow;
+  color: var(--simson-yellow-color);
   font-size: 4em;
 }
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
+    animation: App-logo-spin infinite 3s linear;
     animation: App-logo-spin infinite 2s linear;
+    animation-timing-function: ease-in-out;
   }
 }
 
