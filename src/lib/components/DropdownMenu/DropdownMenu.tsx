@@ -14,16 +14,17 @@ const DropdownMenu = (props: props) => {
   const clickHandler = (roomid: string) => {
     props.setRoomId(roomid);
   };
-  console.log(props.rooms);
+
   return (
     <>
       <Dropdown>
+        <label className="dropdown-label">Select Office</label>
         <div className="DrowndownWrapper">
-          <Dropdown.Toggle variant="NoVariant" id="dropdown-basic">
-            Office Selector
-          </Dropdown.Toggle>
+          <Dropdown.Toggle
+            variant="NoVariant"
+            id="dropdown-basic"
+          ></Dropdown.Toggle>
         </div>
-
         <Dropdown.Menu>
           {props.rooms.rooms?.map((room) => (
             <Dropdown.Item

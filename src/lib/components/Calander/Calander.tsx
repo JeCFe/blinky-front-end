@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import { dateToday } from "./GetTodaysDate";
 import "./Calander.css";
+import DatePicker from "react-datepicker";
+
+import "react-datepicker/dist/react-datepicker.css";
+
 import { CommonButton } from "../Buttons/CommonButton";
 
 interface props {
@@ -8,10 +12,12 @@ interface props {
 }
 
 export const Calander = (props: props) => {
+  const [startDate, setStartDate] = useState(new Date());
   const [enteredDate, setEnteredDate] = useState("");
 
   const dateChangeHandler = (event: any) => {
     setEnteredDate(event.target.value);
+    props.setDate(enteredDate);
   };
 
   const handleSubmit = (event: any) => {
@@ -24,16 +30,13 @@ export const Calander = (props: props) => {
         <div className="data__controls">
           <div className="date__control">
             <label>Date</label>
-            <input
-              type="date"
-              min={dateToday}
-              max="2024-12-31"
-              value={enteredDate}
-              onChange={dateChangeHandler}
+            <DatePicker
+              minDate={startDate}
+              selected={startDate}
+              onChange={(date: any) => setStartDate(date)}
             />
           </div>
         </div>
-        <CommonButton type="submit" value="SELECT DATE" />
       </form>
     </>
   );

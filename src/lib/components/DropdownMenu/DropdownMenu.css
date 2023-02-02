@@ -11,3 +11,11 @@
 .dropdownItem {
   font-size: 1.25em;
 }
+
+.dropdown-label {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  display: block;
+  color: black;
+  font-size: 2em;
+}
