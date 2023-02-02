@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  font-family: "Homer Simpson Revised", sans-serif;
+  font-family: "Homer Simpson Revised", sans-serif !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #fcefa7;

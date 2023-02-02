@@ -7,13 +7,18 @@ import { Calander } from "../components/Calander/Calander";
 import BookingDesk from "../components/Desks/BookableDesk";
 import { useParams } from "react-router";
 import BackButton from "../components/Buttons/BackButton";
+import { useRoom } from "../Services/useRoom";
+import DropdownMenu from "../components/DropdownMenu/DropdownMenu";
 
 const DeskPage = () => {
   const { activeUser } = useParams();
   const [bookingMade, setBookingMade] = useState(false);
   const [date, setDate] = useState(dateToday);
+  const [roomId, setRoomId] = useState<string>();
+
+  const [roomData, roomError, roomLoading] = useRoom();
   const [data, error, loading] = useGetRoomWithIdAndDate({
-    RoomId: DefaultRoomId,
+    RoomId: roomId ?? DefaultRoomId,
     date: date,
     updateState: bookingMade,
     setBookingMade: setBookingMade,
@@ -21,7 +26,7 @@ const DeskPage = () => {
 
   return (
     <div>
-      {loading ? (
+      {loading || roomLoading ? (
         <div>
           <Spinner />
         </div>
@@ -29,6 +34,14 @@ const DeskPage = () => {
         <>
           <div className="center content-wrapper">
             <Calander setDate={setDate} />
+          </div>
+          <div className="center content-wrapper">
+            <DropdownMenu
+              rooms={roomData}
+              setRoomId={
+                setRoomId as React.Dispatch<React.SetStateAction<string>>
+              }
+            />
           </div>
           <div className="center content-wrapper">
             <h2>{data?.roomName}</h2>
