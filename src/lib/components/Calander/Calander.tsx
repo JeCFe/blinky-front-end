@@ -31,7 +31,7 @@ export const Calander = (props: props) => {
           <div className="date__control">
             <label>Date</label>
             <DatePicker
-              minDate={startDate}
+              minDate={new Date()}
               selected={startDate}
               onChange={(date: any) => setStartDate(date)}
             />
