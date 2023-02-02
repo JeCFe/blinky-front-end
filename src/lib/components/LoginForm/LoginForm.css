@@ -36,6 +36,8 @@ label {
 }
 
 .login-box {
+  font-family: "Homer Simpson Revised", sans-serif;
+  font-size: 1.5em;
   border: 1px solid lightgrey;
   display: flex;
   justify-content: center;
@@ -46,7 +48,7 @@ label {
   letter-spacing: 1px;
   font-weight: 600;
   margin: 5px;
-  font-size: 11pt;
+
   background: white;
   transition: 1s;
   outline: none;
