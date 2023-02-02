@@ -4,7 +4,7 @@ import { DefaultRoomId } from "../Services/DefaultRoomId";
 import { dateToday } from "../components/Calander/GetTodaysDate";
 import Spinner from "../components/Spinner/Spinner";
 import { Calander } from "../components/Calander/Calander";
-import BookingDesk from "../components/Desks/Desk";
+import BookingDesk from "../components/Desks/BookableDesk";
 import { useParams } from "react-router";
 import BackButton from "../components/Buttons/BackButton";
 

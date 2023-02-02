@@ -1,11 +1,11 @@
 .spinner-loading-info {
   font: optional;
-  font-size: 100px;
-  font-family: "Homer Simpson Revised", sans-serif;
+  font-size: 2.5em;
 }
 
 .rotate {
-  animation: rotation 2s infinite linear;
+  max-width: 40%;
+  animation: rotation 1s infinite linear;
 }
 
 @keyframes rotation {
@@ -13,6 +13,6 @@
     transform: rotate(0deg);
   }
   to {
-    transform: rotate(359deg);
+    transform: rotate(360deg);
   }
 }

@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 const BackButton = () => {
   return (
     <div className="back-btn-padding">
-      <NavLink to="/" className="button-53">
+      <NavLink to="/" className="back-btn">
         Back
       </NavLink>
     </div>

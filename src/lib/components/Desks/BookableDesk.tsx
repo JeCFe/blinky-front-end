@@ -35,7 +35,7 @@ const BookingDesk = (props: deskInfo) => {
     >
       {!props.deskData.assigned ? (
         <div>
-          <button className="button-52" onClick={onClickHandler}>
+          <button className="desk shared-desk" onClick={onClickHandler}>
             {props.deskData.desk?.name}
             <br />
             AVAILABLE
@@ -43,7 +43,7 @@ const BookingDesk = (props: deskInfo) => {
         </div>
       ) : (
         <div>
-          <div className="button-52_NA">
+          <div className="bookedDesk shared-desk">
             {props.deskData.desk?.name}
             <br />
             {props.deskData.assignedName}

@@ -15,9 +15,10 @@
 }
 .date__control input {
   font: inherit;
-  padding: 1em;
+  padding: 0.5em;
   border-radius: 6px;
   border: 1px solid #ccc;
   width: 20rem;
+  font-size: 1.5em;
   max-width: 100%;
 }

@@ -40,7 +40,7 @@ export const MoveableDesk = (props: deskPositioning) => {
       }}
     >
       <div>
-        <button className="button-52 drag-padding">
+        <button className="desk drag-padding">
           {props.name}
           <br />
           AVAILABLE
