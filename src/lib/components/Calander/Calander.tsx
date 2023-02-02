@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-import { dateToday } from "./GetTodaysDate";
 import "./Calander.css";
 import DatePicker from "react-datepicker";
-
 import "react-datepicker/dist/react-datepicker.css";
 
 import { CommonButton } from "../Buttons/CommonButton";
@@ -12,17 +10,13 @@ interface props {
 }
 
 export const Calander = (props: props) => {
-  const [startDate, setStartDate] = useState(new Date());
-  const [enteredDate, setEnteredDate] = useState("");
-
-  const dateChangeHandler = (event: any) => {
-    setEnteredDate(event.target.value);
-    props.setDate(enteredDate);
-  };
+  const [enteredDate, setEnteredDate] = useState(new Date());
 
   const handleSubmit = (event: any) => {
     event.preventDefault();
-    props.setDate(enteredDate);
+    setEnteredDate(event.target.value);
+    const newDate = enteredDate.toISOString().split("T")[0];
+    props.setDate(newDate);
   };
   return (
     <>
@@ -32,8 +26,9 @@ export const Calander = (props: props) => {
             <label>Date</label>
             <DatePicker
               minDate={new Date()}
-              selected={startDate}
-              onChange={(date: any) => setStartDate(date)}
+              selected={enteredDate}
+              dateFormat="dd/MM/yyyy"
+              onChange={(date: any) => setEnteredDate(date)}
             />
           </div>
         </div>

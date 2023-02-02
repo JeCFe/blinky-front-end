@@ -1,6 +1,5 @@
 import react, { useState } from "react";
 import BackButton from "../components/Buttons/BackButton";
-
 import { MoveableDesk } from "../components/Desks/MoveableDesk";
 import Spinner from "../components/Spinner/Spinner";
 import { DefaultRoomId } from "../Services/DefaultRoomId";
