@@ -20,7 +20,7 @@ export const DeskOrganisation = () => {
 
   return (
     <>
-      {loading && roomLoading ? (
+      {loading || roomLoading ? (
         <div>
           <Spinner />
         </div>
@@ -33,6 +33,8 @@ export const DeskOrganisation = () => {
                 setRoomId as React.Dispatch<React.SetStateAction<string>>
               }
             />
+          </div>
+          <div className="center content-wrapper">
             <h2>{data?.roomName}</h2>
           </div>
           <div className="center content-wrapper">

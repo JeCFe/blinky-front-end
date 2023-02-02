@@ -1,0 +1,13 @@
+.DrowndownWrapper {
+  border-style: solid;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+#dropdown-basic {
+  font-size: 1.5em;
+}
+
+.dropdownItem {
+  font-size: 1.25em;
+}
