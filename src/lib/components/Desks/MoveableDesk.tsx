@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Draggable, { DraggableData, DraggableEvent } from "react-draggable";
 import { useUpdateDeskPosition } from "../../Services/useUpdateDeskPosition";
 import "./Button.css";
@@ -11,8 +11,23 @@ export type deskPositioning = {
 };
 
 export const MoveableDesk = (props: deskPositioning) => {
+  const [posX, setPosX] = useState<number>(props.x);
+  const [posY, setPosY] = useState<number>(props.y);
+  const [deskMoved, setDeskMoved] = useState<boolean>(false);
+  let x = 0;
+
+  const [data, loading, error] = useUpdateDeskPosition({
+    deskId: props.id,
+    posX: posX,
+    posY: posY,
+    setDeskMovedBool: deskMoved,
+    setDeskMoved: setDeskMoved,
+  });
+
   const stopDrag = (e: DraggableEvent, data: DraggableData) => {
-    useUpdateDeskPosition({ deskId: props.id, posX: data.x, posY: data.y });
+    setPosX(data.x);
+    setPosY(data.y);
+    setDeskMoved(true);
   };
 
   return (
