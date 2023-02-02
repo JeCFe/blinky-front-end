@@ -32,6 +32,12 @@ export interface ViewDesksResponse {
      * @memberof ViewDesksResponse
      */
     readonly desksAvailability?: Array<DeskAvailability> | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ViewDesksResponse
+     */
+    readonly roomName?: string | null;
 }
 
 /**
@@ -54,6 +60,7 @@ export function ViewDesksResponseFromJSONTyped(json: any, ignoreDiscriminator: b
     return {
         
         'desksAvailability': !exists(json, 'desksAvailability') ? undefined : (json['desksAvailability'] === null ? null : (json['desksAvailability'] as Array<any>).map(DeskAvailabilityFromJSON)),
+        'roomName': !exists(json, 'roomName') ? undefined : json['roomName'],
     };
 }
 

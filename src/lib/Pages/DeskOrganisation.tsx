@@ -14,6 +14,9 @@ export const DeskOrganisation = () => {
   return (
     <>
       <div className="center content-wrapper">
+        <h2>{data?.roomName}</h2>
+      </div>
+      <div className="center content-wrapper">
         <div
           className="box"
           style={{
