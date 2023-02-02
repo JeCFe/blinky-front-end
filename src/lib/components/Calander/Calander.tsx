@@ -3,8 +3,6 @@ import "./Calander.css";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-import { CommonButton } from "../Buttons/CommonButton";
-
 interface props {
   setDate: React.Dispatch<React.SetStateAction<string>>;
 }
