@@ -28,6 +28,7 @@ export const DeskOrganisation = () => {
           <div className="center content-wrapper">
             <DropdownMenu
               rooms={roomData}
+              roomName={data?.roomName as string}
               setRoomId={
                 setRoomId as React.Dispatch<React.SetStateAction<string>>
               }

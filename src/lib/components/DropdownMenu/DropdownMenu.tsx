@@ -7,6 +7,7 @@ import "./DropdownMenu.css";
 
 interface props {
   rooms: RoomsResponse;
+  roomName: string;
   setRoomId: React.Dispatch<React.SetStateAction<string>>;
 }
 
@@ -20,10 +21,9 @@ const DropdownMenu = (props: props) => {
       <Dropdown>
         <label className="dropdown-label">Select Office</label>
         <div className="DrowndownWrapper">
-          <Dropdown.Toggle
-            variant="NoVariant"
-            id="dropdown-basic"
-          ></Dropdown.Toggle>
+          <Dropdown.Toggle variant="NoVariant" id="dropdown-basic">
+            {props.roomName}
+          </Dropdown.Toggle>
         </div>
         <Dropdown.Menu>
           {props.rooms.rooms?.map((room) => (
@@ -44,3 +44,6 @@ const DropdownMenu = (props: props) => {
 };
 
 export default DropdownMenu;
+function useState(): [any, any] {
+  throw new Error("Function not implemented.");
+}

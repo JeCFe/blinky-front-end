@@ -20,11 +20,7 @@ const BookingDesk = (props: deskInfo) => {
       setBookingMade: props.setBookingMade,
     });
   };
-  console.log(
-    props.deskData.desk?.name,
-    props.deskData.desk?.posX,
-    props.deskData.desk?.posY
-  );
+
   return (
     <Draggable
       disabled={true}

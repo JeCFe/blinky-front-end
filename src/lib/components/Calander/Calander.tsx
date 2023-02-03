@@ -10,27 +10,23 @@ interface props {
 export const Calander = (props: props) => {
   const [enteredDate, setEnteredDate] = useState(new Date());
 
-  const handleSubmit = (event: any) => {
-    event.preventDefault();
-    setEnteredDate(event.target.value);
+  const handleChange = (date: any) => {
+    console.log(date);
+    setEnteredDate(date);
     const newDate = enteredDate.toISOString().split("T")[0];
     props.setDate(newDate);
   };
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <div className="data__controls">
-          <div className="date__control">
-            <label>Date</label>
-            <DatePicker
-              minDate={new Date()}
-              selected={enteredDate}
-              dateFormat="dd/MM/yyyy"
-              onChange={(date: any) => setEnteredDate(date)}
-            />
-          </div>
-        </div>
-      </form>
+      <div className="date__control">
+        <label>Date</label>
+        <DatePicker
+          minDate={new Date()}
+          selected={enteredDate}
+          dateFormat="dd/MM/yyyy"
+          onChange={handleChange}
+        />
+      </div>
     </>
   );
 };

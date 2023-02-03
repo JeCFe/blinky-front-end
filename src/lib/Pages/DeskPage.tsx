@@ -9,6 +9,7 @@ import { useParams } from "react-router";
 import BackButton from "../components/Buttons/BackButton";
 import { useRoom } from "../Services/useRoom";
 import DropdownMenu from "../components/DropdownMenu/DropdownMenu";
+import { ro } from "date-fns/locale";
 
 const DeskPage = () => {
   const { activeUser } = useParams();
@@ -41,6 +42,7 @@ const DeskPage = () => {
               setRoomId={
                 setRoomId as React.Dispatch<React.SetStateAction<string>>
               }
+              roomName={data?.roomName as string}
             />
           </div>
 
