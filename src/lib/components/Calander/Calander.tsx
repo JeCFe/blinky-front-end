@@ -15,9 +15,12 @@ export const Calander = (props: props) => {
     props.setDate(enteredDate);
   };
 
+  const handleSubmit = (event: any) => {
+    props.setDate(enteredDate);
+  };
   return (
     <>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div className="data__controls">
           <div className="date__control">
             <label>Date</label>
