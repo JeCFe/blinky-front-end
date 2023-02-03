@@ -1,32 +1,32 @@
 import React, { useState } from "react";
+import { dateToday } from "./GetTodaysDate";
 import "./Calander.css";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
 
 interface props {
   setDate: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export const Calander = (props: props) => {
-  const [enteredDate, setEnteredDate] = useState(new Date());
+  const [enteredDate, setEnteredDate] = useState(dateToday);
 
-  const handleChange = (date: any) => {
-    setEnteredDate(date);
-    const newDate = enteredDate.toISOString().split("T")[0];
-    console.log(newDate);
-    props.setDate(newDate);
+  const dateChangeHandler = (event: any) => {
+    setEnteredDate(event.target.value);
+    props.setDate(enteredDate);
   };
+
   return (
     <>
-      <div className="date__control">
-        <label>Date</label>
-        <DatePicker
-          minDate={new Date()}
-          selected={enteredDate}
-          dateFormat="dd/MM/yyyy"
-          onChange={handleChange}
-          calendarStartDay={1}
-        />
+      <div className="data__controls">
+        <div className="date__control">
+          <label>Date</label>
+          <input
+            type="date"
+            min={dateToday}
+            max="2024-12-31"
+            value={enteredDate}
+            onChange={dateChangeHandler}
+          />
+        </div>
       </div>
     </>
   );
