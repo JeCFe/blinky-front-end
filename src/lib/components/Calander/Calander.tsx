@@ -11,9 +11,9 @@ export const Calander = (props: props) => {
   const [enteredDate, setEnteredDate] = useState(new Date());
 
   const handleChange = (date: any) => {
-    console.log(date);
     setEnteredDate(date);
     const newDate = enteredDate.toISOString().split("T")[0];
+    console.log(newDate);
     props.setDate(newDate);
   };
   return (
@@ -25,6 +25,7 @@ export const Calander = (props: props) => {
           selected={enteredDate}
           dateFormat="dd/MM/yyyy"
           onChange={handleChange}
+          calendarStartDay={1}
         />
       </div>
     </>
