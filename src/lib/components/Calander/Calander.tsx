@@ -8,7 +8,7 @@ interface props {
 }
 
 export const Calander = (props: props) => {
-  const [enteredDate, setEnteredDate] = useState("");
+  const [enteredDate, setEnteredDate] = useState<string>();
 
   const dateChangeHandler = (event: any) => {
     setEnteredDate(event.target.value);
@@ -16,24 +16,23 @@ export const Calander = (props: props) => {
 
   const handleSubmit = (event: any) => {
     event.preventDefault();
-    props.setDate(enteredDate);
+    props.setDate(enteredDate ?? dateToday);
   };
   return (
     <>
       <form onSubmit={handleSubmit}>
         <div className="data__controls">
           <div className="date__control">
-            <label>Date</label>
             <input
               type="date"
               min={dateToday}
               max="2024-12-31"
-              value={enteredDate}
+              value={enteredDate ?? dateToday}
               onChange={dateChangeHandler}
             />
           </div>
         </div>
-        <CommonButton type="submit" value="SELECT DATE" />
+        <CommonButton type="submit" value="CONFIRM DATE" />
       </form>
     </>
   );

@@ -7,6 +7,7 @@ import "./DropdownMenu.css";
 
 interface props {
   rooms: RoomsResponse;
+  roomName: string;
   setRoomId: React.Dispatch<React.SetStateAction<string>>;
 }
 
@@ -20,7 +21,7 @@ const DropdownMenu = (props: props) => {
       <Dropdown>
         <div className="DrowndownWrapper">
           <Dropdown.Toggle variant="NoVariant" id="dropdown-basic">
-            Office Selector
+            {props.roomName}
           </Dropdown.Toggle>
         </div>
 
