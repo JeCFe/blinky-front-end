@@ -16,6 +16,7 @@ export const useUpdateDeskPosition = (props: props) => {
   const [error, setError] = useState<any>(null);
   const [loading, setLoading] = useState<boolean>(true);
   useEffect(() => {
+    setLoading(true);
     api
       .updatePositionPostRaw({
         deskId: props.deskId,

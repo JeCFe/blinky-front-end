@@ -22,6 +22,7 @@ export const useGetRoomWithIdAndDate = (
   const api = new BlinkyBackEndApi(configuration);
 
   useEffect(() => {
+    setLoading(true);
     api
       .roomsRoomIdGetRaw({ roomId: props.RoomId, date: props.date })
       .then(async (awaitResponse) => {

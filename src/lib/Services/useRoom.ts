@@ -11,6 +11,7 @@ export const useRoom = () => {
   const [error, setError] = useState<any>(null);
   const [loading, setLoading] = useState<boolean>(true);
   useEffect(() => {
+    setLoading(true);
     api
       .roomsGetRaw()
       .then(async (response) => {
