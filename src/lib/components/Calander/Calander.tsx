@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { dateToday } from "./GetTodaysDate";
 import "./Calander.css";
+import { CommonButton } from "../Buttons/CommonButton";
 
 interface props {
   setDate: React.Dispatch<React.SetStateAction<string>>;
@@ -11,23 +12,30 @@ export const Calander = (props: props) => {
 
   const dateChangeHandler = (event: any) => {
     setEnteredDate(event.target.value);
+  };
+
+  const handleSubmit = (event: any) => {
+    event.preventDefault();
     props.setDate(enteredDate);
   };
 
   return (
     <>
-      <div className="data__controls">
-        <div className="date__control">
-          <label>Date</label>
-          <input
-            type="date"
-            min={dateToday}
-            max="2024-12-31"
-            value={enteredDate}
-            onChange={dateChangeHandler}
-          />
+      <form onSubmit={handleSubmit}>
+        <div className="data__controls">
+          <div className="date__control">
+            <label>Date</label>
+            <input
+              type="date"
+              min={dateToday}
+              max="2024-12-31"
+              value={enteredDate}
+              onChange={dateChangeHandler}
+            />
+          </div>
         </div>
-      </div>
+        <CommonButton type="submit" value="CONFIRM DATE" />
+      </form>
     </>
   );
 };
