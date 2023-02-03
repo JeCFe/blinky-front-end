@@ -19,6 +19,7 @@ const DropdownMenu = (props: props) => {
   return (
     <>
       <Dropdown>
+        <label className="dropdown-label">Select Office</label>
         <div className="DrowndownWrapper">
           <Dropdown.Toggle variant="NoVariant" id="dropdown-basic">
             {props.roomName}
