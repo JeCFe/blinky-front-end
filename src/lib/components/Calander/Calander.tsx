@@ -12,10 +12,10 @@ export const Calander = (props: props) => {
 
   const dateChangeHandler = (event: any) => {
     setEnteredDate(event.target.value);
-    props.setDate(enteredDate);
   };
 
   const handleSubmit = (event: any) => {
+    event.preventDefault();
     props.setDate(enteredDate);
   };
   return (
@@ -33,6 +33,7 @@ export const Calander = (props: props) => {
             />
           </div>
         </div>
+        <CommonButton type="submit" value="SELECT DATE" />
       </form>
     </>
   );
