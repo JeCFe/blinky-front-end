@@ -33,7 +33,7 @@ export const Calander = (props: props) => {
             />
           </div>
         </div>
-        <CommonButton type="submit" value="SELECT DATE" />
+        <CommonButton type="submit" value="CONFIRM DATE" />
       </form>
     </>
   );
