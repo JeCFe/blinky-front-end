@@ -8,7 +8,7 @@ interface props {
 }
 
 export const Calander = (props: props) => {
-  const [enteredDate, setEnteredDate] = useState("");
+  const [enteredDate, setEnteredDate] = useState(dateToday);
 
   const dateChangeHandler = (event: any) => {
     setEnteredDate(event.target.value);
